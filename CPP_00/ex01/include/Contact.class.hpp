@@ -6,12 +6,14 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:21:33 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/20 13:51:28 by phautena         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:18:26 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_CLASS_HPP
 # define CONTACT_CLASS_HPP
+# include <string>
+# include <iostream>
 
 class	Contact {
 

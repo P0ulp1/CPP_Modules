@@ -6,19 +6,17 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:28:12 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/20 13:51:38 by phautena         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:19:38 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Contact.class.hpp"
 
 // Construct && Destruct
 Contact::Contact(void) {
-
-	std::cout << "Constructor called" << std::endl;
 }
 
 Contact::~Contact(void) {
-	std::cout << "Destructor called" << std::endl;
 }
 
 // Getters
