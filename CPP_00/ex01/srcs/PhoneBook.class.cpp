@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:13:39 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/20 15:02:39 by phautena         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:08:26 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 PhoneBook::PhoneBook(void) {
 
+	// PhoneBook::_index = 0;
 	std::cout << "Welcome to your new PhoneBook!" << std::endl;
 	this->_index = 0;
 }
 
 PhoneBook::~PhoneBook(void) {
 
-	std::cout << "Goodbye!" << std::endl;
+	std::cout << std::endl << "Goodbye!" << std::endl;
 }
 
 int		PhoneBook::_valid_string(std::string str, int mode) {
@@ -107,12 +108,50 @@ void	PhoneBook::add(void) {
 
 void	PhoneBook::search(void) {
 
-	for (int i = 0; i < 26; i++)
+	std::string	str;
+
+	if (this->_index % 8 == 0)
+	{
+		std::cout << "The phonebook doesn't contain any contacts. Add some with the ADD command." << std::endl;
+		return ;
+	}
+	for (int i = 0; i < 44; i++)
 		std::cout << "-";
 	std::cout << std::endl;
 	for (int i = 0; i < this->_index % 8; i++)
 	{
-
+		std::cout.width(10);
+		std::cout << std::right << this->_index % 8 << "|";
+		std::cout.width(10);
+		if (this->_contacts->get_fname().size() > 10)
+		{
+			str = this->_contacts->get_fname();
+			str.resize(10);
+			str[9] = '.';
+			std::cout << std::right << str << "|";
+		}
+		else
+			std::cout << std::right << this->_contacts->get_fname() << "|";
+		std::cout.width(10);
+		if (this->_contacts->get_lname().size() > 10)
+		{
+			str = this->_contacts->get_lname();
+			str.resize(10);
+			str[9] = '.';
+			std::cout << std::right << str << "|";
+		}
+		else
+			std::cout << std::right << this->_contacts->get_lname() << "|";
+		std::cout.width(10);
+		if (this->_contacts->get_nickname().size() > 10)
+		{
+			str = this->_contacts->get_nickname();
+			str.resize(10);
+			str[9] = '.';
+			std::cout << std::right << str << "|";
+		}
+		else
+			std::cout << std::right << this->_contacts->get_nickname() << "|" << std::endl;
 	}
 }
 

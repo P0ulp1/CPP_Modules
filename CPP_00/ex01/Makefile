@@ -6,7 +6,7 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 15:04:28 by phautena          #+#    #+#              #
-#    Updated: 2025/03/20 13:51:18 by phautena         ###   ########.fr        #
+#    Updated: 2025/04/03 14:01:12 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS = ./srcs/Contact.class.cpp ./srcs/PhoneBook.class.cpp ./srcs/main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -ggdb
 
 all: $(NAME)
 

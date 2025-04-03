@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:12:10 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/20 14:58:50 by phautena         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:08:33 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ public:
 
 private:
 
-	Contact	_contacts[8];
-	int		_index;
+	Contact			_contacts[8];
+	int				_index;
 
 	int			_valid_string(std::string str, int mode);
 
