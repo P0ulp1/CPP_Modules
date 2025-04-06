@@ -3,44 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/20 12:21:33 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/20 14:18:26 by phautena         ###   ########.fr       */
+/*   Created: 2025/04/06 14:24:29 by ubuntu            #+#    #+#             */
+/*   Updated: 2025/04/06 14:27:25 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_CLASS_HPP
-# define CONTACT_CLASS_HPP
-# include <string>
-# include <iostream>
+#include <iostream>
 
 class	Contact {
 
-public:
+	public:
+		Contact(void);
+		~Contact(void);
 
-	Contact(void);
-	~Contact(void);
-
-	std::string	get_fname(void) const;
-	std::string	get_lname(void) const;
-	std::string	get_nickname(void) const;
-	std::string	get_phone(void) const;
-	std::string	get_secret(void) const;
-	void		set_fname(std::string str);
-	void		set_lname(std::string str);
-	void		set_nickname(std::string str);
-	void		set_phone(std::string str);
-	void		set_secret(std::string str);
-
-private:
-
-	std::string	_fname;
-	std::string	_lname;
-	std::string	_nickname;
-	std::string	_phone;
-	std::string _secret;
+	private:
 
 };
-
-#endif
