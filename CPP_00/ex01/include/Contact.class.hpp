@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 14:24:29 by ubuntu            #+#    #+#             */
-/*   Updated: 2025/04/06 14:27:25 by ubuntu           ###   ########.fr       */
+/*   Updated: 2025/04/09 16:15:22 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
 class	Contact {
 
@@ -18,6 +19,14 @@ class	Contact {
 		Contact(void);
 		~Contact(void);
 
-	private:
+		void	info_short(void);
+		void	info_long(void);
+		void	set_info(void);
 
+	private:
+		std::string	fname;
+		std::string	lname;
+		std::string	nname;
+		std::string	phone;
+		std::string	secret;
 };
