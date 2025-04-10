@@ -6,13 +6,14 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 14:24:29 by ubuntu            #+#    #+#             */
-/*   Updated: 2025/04/10 14:23:40 by phautena         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:23:59 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cstdlib>
 #include <ctype.h>
 
 class	Contact {
