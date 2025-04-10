@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:24:57 by phautena          #+#    #+#             */
-/*   Updated: 2025/04/09 16:13:58 by phautena         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:59:02 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	main(void)
 	while (1)
 	{
 		std::cout << "> ";
-		std::cin >> command;
-		if (command.compare("ADD") == true)
+		std::getline(std::cin, command);
+		if (command == "ADD")
 			ph.add_contact();
-		else if (command.compare("SEARCH") == true)
+		else if (command == "SEARCH")
 			ph.search_contact();
-		else if (command.compare("EXIT") == true)
+		else if (command == "EXIT")
 		{
 			std::cout << "Thanks for using this PhoneBook. Goodbye!" << std::endl;
 			exit(0);
