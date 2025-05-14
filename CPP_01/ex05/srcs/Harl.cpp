@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 12:21:24 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/12 12:44:47 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/12 13:07:10 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ void	Harl::complain(std::string level)
 			return;
 		}
 	}
-	std::cout << "Invalid input detected. You're a despicable human." << std::endl;
+	std::cout << "Invalid input detected. Are you trying to make me crash? You're a despicable human." << std::endl;
 }
