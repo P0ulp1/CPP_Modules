@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:21 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/12 15:50:11 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:38:20 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ class	Fixed
 {
 	private:
 		int					_n;
-		static int const	_b;
+		static const int	_bits = 8;
 
 	public:
 		Fixed(void);
 		~Fixed(void);
-		Fixed(Fixed& const src);
-		Fixed&	operator=(Fixed& const rhs);
+		Fixed(Fixed const & src);
+		Fixed&	operator=(Fixed const & rhs);
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 };

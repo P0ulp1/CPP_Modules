@@ -6,13 +6,13 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/05/12 12:48:48 by phautena         ###   ########.fr        #
+#    Updated: 2025/05/14 13:38:36 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harlFilter
+NAME = test
 
-SRCS = ./srcs/main.cpp ./srcs/Harl.cpp
+SRCS = ./srcs/main.cpp ./srcs/Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
