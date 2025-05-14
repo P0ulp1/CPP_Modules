@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:54:09 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/14 16:27:56 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:29:13 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _ep(10), _atk(0)
 {
-	std::cout << "\nClapTrap " << _name << " just went out from the factory with the following attributes:" << std::endl;
-	std::cout << "Health Points: " << _hp << "\n" << "Energy Points: " << _ep << "\n" << "Attack Damage: " << _atk << "\n" << std::endl;
+	std::cout << "\nClapTrap " << _name << " just went out from the factory" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
