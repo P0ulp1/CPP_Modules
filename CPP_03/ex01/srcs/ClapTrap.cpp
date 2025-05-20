@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p0ulp1 <p0ulp1@student.42.fr>              +#+  +:+       +#+        */
+/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:54:09 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/19 13:31:10 by p0ulp1           ###   ########.fr       */
+/*   Updated: 2025/05/20 15:57:07 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void) : _name("default"), _hp(10), _ep(10), _atk(0)
+{
+	std::cout << "ClapTrap " << _name << " just went out from the factory" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _ep(10), _atk(0)
 {
-	std::cout << "\nClapTrap " << _name << " just went out from the factory" << std::endl;
+	std::cout << "ClapTrap " << _name << " just went out from the factory" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
@@ -44,45 +49,36 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (_ep >= 1)
+	if (_ep >= 1 && _hp > 0)
 	{
 		_ep--;
-		std::cout << "ClapTrap " << _name << " attacks ClapTrap " << target << std::endl;
-		std::cout << "ClapTrap " << target << " has lost " << _atk << "HP" << std::endl;
-		std::cout << "ClapTrap " << _name << " has " << _ep << "EP remaining" << std::endl;\
+		std::cout << "ClapTrap " << _name << " attacks " << target << "with " << _atk << "ATK force" << std::endl;
 	}
+	else if (_hp <= 0)
+		std::cout << "ClapTrap " << _name << " cannot attack because he is already dead" << std::endl;
 	else
-	{
-		std::cout << "ClapTrap " << _name << " doesn't have enough EP to attack " << target << std::endl;
-	}
+		std::cout << "ClapTrap " << _name << " doesn't have enough EP/HP to attack " << target << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	_hp -= amount;
 	std::cout << "ClapTrap " << _name << " takes " << amount << "DMG" << std::endl;
-	if (amount > 0)
-	{
-		std::cout << "ClapTrap " << _name << " has now " << _hp << "HP" << std::endl;
-	}
-	else
-	{
+	if (_hp <= 0)
 		std::cout << "This fatal blow cause ClapTrap " << _name << "to be destroyed... RIP" << std::endl;
-	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 
-	if (_ep >= 1)
+	if (_ep >= 1 && _hp > 0)
 	{
 		--_ep;
 		_hp += amount;
-		std::cout << "ClapTrap " << _name << " opens his hatch and repairs himself" << std::endl;
-		std::cout << "ClapTrap " << _name << " gains " << amount << "HP and therefore has now " << _hp << " HP in total" << std::endl;
+		std::cout << "ClapTrap " << _name << " opens his hatch and repairs himself and gains " << amount << "HP" << std::endl;
 	}
+	else if (_hp <= 0)
+		std::cout << "ClapTrap " << _name << " cannoy repair himself because he is already dead" << std::endl;
 	else
-	{
 		std::cout << "ClapTrap " << _name << "doesn't have enough EP to repair himself" << std::endl;
-	}
 }

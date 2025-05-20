@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 15:53:48 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/20 15:54:46 by phautena         ###   ########.fr       */
+/*   Created: 2025/05/20 15:17:30 by phautena          #+#    #+#             */
+/*   Updated: 2025/05/20 15:55:29 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScavTrap.hpp"
+#ifndef SCAV_TRAP_HPP
+# define SCAV_TRAP_HPP
 
-int	main(void)
+# include "../includes/ClapTrap.hpp"
+
+class	ScavTrap : public ClapTrap
 {
-	ClapTrap	Bob("B0b");
-	ScavTrap	Gerald("G3r4ld");
+	private:
 
-	Gerald.guardGate();
-	Bob.attack("G3r4ld");
-	Gerald.beRepaired(2);
-	Gerald.attack("B0b");
-}
+	public:
+		ScavTrap(void);
+		ScavTrap(std::string name);
+		~ScavTrap(void);
+		ScavTrap(const ScavTrap &copy);
+		ScavTrap	&operator=(const ScavTrap &rhs);
+		void		attack(const std::string &target);
+		void		guardGate(void);
+};
+
+#endif

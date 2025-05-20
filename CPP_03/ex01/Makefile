@@ -6,13 +6,13 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/05/14 16:18:51 by phautena         ###   ########.fr        #
+#    Updated: 2025/05/20 15:58:07 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ClapTrap
+NAME = ScavTrap
 
-SRCS = ./srcs/main.cpp ./srcs/ClapTrap.cpp
+SRCS = ./srcs/main.cpp ./srcs/ClapTrap.cpp ./srcs/ScavTrap.cppCPP_03/ex00/srcs
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
