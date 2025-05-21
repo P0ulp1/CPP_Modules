@@ -6,14 +6,14 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:21 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/14 15:46:10 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:34:53 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
-#include <iostream>
-#include <cmath>
+# include <iostream>
+# include <cmath>
 
 class	Fixed
 {
@@ -26,15 +26,15 @@ class	Fixed
 		Fixed(const int n_integer);
 		Fixed(const float n_float);
 		~Fixed(void);
-		Fixed(Fixed const & src);
+		Fixed(Fixed const &src);
 
-		Fixed&	operator=(Fixed const & rhs);
-		bool	operator>(Fixed const & rhs);
-		bool	operator<(Fixed const & rhs);
-		bool	operator>=(Fixed const & rhs);
-		bool	operator<=(Fixed const & rhs);
-		bool	operator==(Fixed const & rhs);
-		bool	operator!=(Fixed const & rhs);
+		Fixed&	operator=(Fixed const &rhs);
+		bool	operator>(Fixed const &rhs);
+		bool	operator<(Fixed const &rhs);
+		bool	operator>=(Fixed const &rhs);
+		bool	operator<=(Fixed const &rhs);
+		bool	operator==(Fixed const &rhs);
+		bool	operator!=(Fixed const &rhs);
 
 		Fixed	operator+(Fixed const & rhs);
 		Fixed	operator-(Fixed const & rhs);
