@@ -6,13 +6,13 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:53:34 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/21 15:18:25 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:45:13 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Dog.hpp"
 
-Dog::Dog(void) : Animal()
+Dog::Dog(void)
 {
 	std::cout << "Dog constructor called" << std::endl;
 	_type = "Dog";

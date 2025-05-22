@@ -1,49 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 14:43:44 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/22 14:50:34 by phautena         ###   ########.fr       */
+/*   Created: 2025/05/22 14:20:05 by phautena          #+#    #+#             */
+/*   Updated: 2025/05/22 14:50:53 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/WrongAnimal.hpp"
 
-Animal::Animal(void) : _type("Animal")
+WrongAnimal::WrongAnimal(void) : _type("Wrong Animal")
 {
-	std::cout << "Animal constructor called" << std::endl;
+	std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
-Animal::~Animal(void)
+WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "Animal destructor called" << std::endl;
+	std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &copy)
+WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	_type = copy._type;
 }
 
-Animal	&Animal::operator=(const Animal &rhs)
+WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &rhs)
 {
-	std::cout << "Animal assignment operator overload called" << std::endl;
+	std::cout << "WrongAnimal assignement operator overload called" << std::endl;
 	if (this != &rhs)
-	{
 		_type = rhs._type;
-	}
 	return (*this);
 }
 
-void	Animal::makeSound(void) const
+void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "*Animal sound*" << std::endl;
+	std::cout << "*Weird animal sound*" << std::endl;
 }
 
-std::string	Animal::getType(void) const
+std::string	WrongAnimal::getType(void) const
 {
 	return (_type);
 }

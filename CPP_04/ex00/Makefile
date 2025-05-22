@@ -6,13 +6,13 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/05/21 15:20:30 by phautena         ###   ########.fr        #
+#    Updated: 2025/05/22 14:44:13 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = animals
 
-SRCS = ./srcs/main.cpp ./srcs/Animal.cpp ./srcs/Cat.cpp ./srcs/Dog.cpp
+SRCS = ./srcs/main.cpp ./srcs/Animal.cpp ./srcs/Cat.cpp ./srcs/Dog.cpp ./srcs/WrongAnimal.cpp ./srcs/WrongCat.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++

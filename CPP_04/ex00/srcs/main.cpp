@@ -6,12 +6,13 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:30:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/21 15:19:00 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:16:46 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cat.hpp"
 #include "../includes/Dog.hpp"
+#include "../includes/WrongCat.hpp"
 
 int	main(void)
 {
@@ -21,9 +22,24 @@ int	main(void)
 
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
+	std::cout << meta->getType() << " " << std::endl;
 	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
+
+	const WrongAnimal* k = new WrongAnimal();
+	const WrongAnimal* l = new WrongCat();
+
+	std::cout << k->getType() << " " << std::endl;
+	std::cout << l->getType() << " " << std::endl;
+	k->makeSound();
+	l->makeSound();
+
+	delete meta;
+	delete j;
+	delete i;
+	delete k;
+	delete l;
 
 	return (0);
 }
