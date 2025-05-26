@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:53:37 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/23 13:07:40 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:40:18 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Cat : public Animal
 		Cat(const Cat &copy);
 		Cat			&operator=(const Cat &rhs);
 		void		makeSound(void) const;
-		void		setIdeas(const std::string &ideas);
-		std::string	getIdeas(int index);
+		void		setIdeas(const int &index, const std::string &ideas);
+		std::string	getIdeas(const int &index);
 };
 
 #endif

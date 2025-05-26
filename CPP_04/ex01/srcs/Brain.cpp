@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:24:20 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/23 13:49:46 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:42:55 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,21 @@ Brain	&Brain::operator=(const Brain &rhs)
 	return (*this);
 }
 
-void	Brain::setIdeas(const std::string &ideas)
+void	Brain::setIdeas(const int &index, const std::string &ideas)
 {
-	for (int i = 0; i < 100; i++)
-		_ideas[i] = ideas;
+	if (index >= 0 && index <= 99)
+		_ideas[index] = ideas;
+	else
+		std::cout << "Invalid ideas index" << std::endl;
 }
 
-std::string	Brain::getIdeas(int index)
+std::string	Brain::getIdeas(const int &index)
 {
-	return (_ideas[index]);
+	if (index >= 0 && index <= 99)
+		return (_ideas[index]);
+	else
+	{
+		std::cout << "Invalid ideas index" << std::endl;
+		return ("null");
+	}
 }

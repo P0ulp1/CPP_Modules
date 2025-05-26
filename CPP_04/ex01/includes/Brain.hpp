@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:24:18 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/23 13:49:42 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:40:22 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class	Brain
 		~Brain(void);
 		Brain(const Brain &copy);
 		Brain		&operator=(const Brain &rhs);
-		void		setIdeas(const std::string &ideas);
-		std::string	getIdeas(int index);
+		void		setIdeas(const int &index, const std::string &ideas);
+		std::string	getIdeas(const int &index);
 };
 
 #endif

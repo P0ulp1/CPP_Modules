@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:53:32 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/23 14:02:14 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:54:27 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Cat::~Cat(void)
 Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
-	_brain = copy._brain;
+	_brain = new Brain(*copy._brain);
 }
 
 Cat	&Cat::operator=(const Cat &rhs)
@@ -37,8 +37,8 @@ Cat	&Cat::operator=(const Cat &rhs)
 	std::cout << "Cat assignment operator overload called" << std::endl;
 	if (this != &rhs)
 	{
-		_type = rhs._type;
-		_brain = rhs._brain;
+		delete _brain;
+		_brain = new Brain(*rhs._brain);
 	}
 	return (*this);
 }
@@ -48,12 +48,12 @@ void	Cat::makeSound(void) const
 	std::cout << "*Meow Meow" << std::endl;
 }
 
-void	Cat::setIdeas(const std::string &ideas)
+void	Cat::setIdeas(const int &index, const std::string &ideas)
 {
-	_brain->setIdeas(ideas);
+	_brain->setIdeas(index, ideas);
 }
 
-std::string	Cat::getIdeas(int index)
+std::string	Cat::getIdeas(const int &index)
 {
 	return (_brain->getIdeas(index));
 }

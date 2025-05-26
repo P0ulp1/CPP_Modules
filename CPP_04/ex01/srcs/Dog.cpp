@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:53:34 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/23 13:58:14 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:42:10 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	Dog::makeSound(void) const
 	std::cout << "*Bark Bark" << std::endl;
 }
 
-void	Dog::setIdeas(const std::string &ideas)
+void	Dog::setIdeas(const int &index, const std::string &ideas)
 {
-	_brain->setIdeas(ideas);
+	_brain->setIdeas(index, ideas);
 }
 
-std::string	Dog::getIdeas(int index)
+std::string	Dog::getIdeas(const int &index)
 {
 	return (_brain->getIdeas(index));
 }
