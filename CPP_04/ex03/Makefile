@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
+#    By: p0ulp1 <p0ulp1@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/05/27 16:56:56 by phautena         ###   ########.fr        #
+#    Updated: 2025/05/28 15:33:53 by p0ulp1           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = materia
 
-SRCS = ./srcs/main.cpp ./srcs/AMateria.cpp ./srcs/Character.cpp ./srcs/Cure.cpp ./srcs/Ice.cpp
+SRCS = ./srcs/main.cpp ./srcs/AMateria.cpp ./srcs/Character.cpp ./srcs/Cure.cpp ./srcs/Ice.cpp ./srcs/MateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++

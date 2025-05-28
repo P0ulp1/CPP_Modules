@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p0ulp1 <p0ulp1@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:21:12 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/27 16:47:23 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:58:19 by p0ulp1           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,10 @@ AMateria::~AMateria(void)
 std::string const	&AMateria::getType(void) const
 {
 	return (_type);
+}
+
+void	AMateria::use(ICharacter &target)
+{
+	std::cout << "Using a Materia on " << target.getName() << std::endl;
+	return;
 }

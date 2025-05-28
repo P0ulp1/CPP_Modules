@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p0ulp1 <p0ulp1@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 15:01:09 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/27 17:00:16 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:53:51 by p0ulp1           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-# include "../includes/AMateria.hpp"
-# include "../includes/Ice.hpp"
+# include <string>
+# include <iostream>
+# include "AMateria.hpp"
+
+class	AMateria;
 
 class ICharacter
 {

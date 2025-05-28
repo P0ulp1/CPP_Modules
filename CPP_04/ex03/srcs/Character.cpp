@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p0ulp1 <p0ulp1@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 15:06:32 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/27 16:51:57 by phautena         ###   ########.fr       */
+/*   Updated: 2025/05/28 15:24:36 by p0ulp1           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ Character	&Character::operator=(const Character &rhs)
 				_ground[i] = rhs._ground[i]->clone();
 		}
 	}
+	return (*this);
 }
 
 Character::~Character(void)
@@ -91,6 +92,7 @@ void	Character::equip(AMateria *m)
 		{
 			_inventory[i] = m;
 			std::cout << "Materia Equipped" << std::endl;
+			return;
 		}
 	}
 }
@@ -105,6 +107,7 @@ void	Character::unequip(int idx)
 	else if (!_inventory[idx])
 	{
 		std::cout << "No Materia in this slot" << std::endl;
+		return;
 	}
 	for (int i = 0; i < 100; i++)
 	{
@@ -113,6 +116,7 @@ void	Character::unequip(int idx)
 			_ground[i] = _inventory[idx];
 			_inventory[idx] = NULL;
 			std::cout << "Materia Unequipped" << std::endl;
+			return;
 		}
 	}
 
