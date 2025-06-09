@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:53:37 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/30 16:21:22 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:18:54 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,5 @@ std::ostream	&operator<<(std::ostream &os, const Bureaucrat &copy)
 	os << copy.getName() << ", bureaucrat grade " << copy.getGrade() << std::endl;
 	return (os);
 }
+
+

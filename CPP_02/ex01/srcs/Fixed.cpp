@@ -6,11 +6,16 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/14 14:29:03 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:12:53 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Fixed.hpp"
+
+//But : encoder un float en un e valeur entiere => VALEUR FIXE
+//3.75 * 2^8 = 960.
+//3 << 4 = 3 * 2^4 = 3 * 16 = 48
+// 48 >> 4 = 48 / 2^4 = 48 / 16 = 3
 
 Fixed::Fixed(void): _n(0)
 {
@@ -32,7 +37,7 @@ Fixed&	Fixed::operator=(Fixed const & rhs)
 {
 	std::cout << "Copy assignement operator called" << std::endl;
 	if (this != &rhs)
-		this->_n = rhs.getRawBits();
+		this->_n = rhs._n;
 	return (*this);
 }
 
@@ -41,6 +46,10 @@ std::ostream&	operator<<(std::ostream& os, const Fixed &copy)
 	os << copy.toFloat();
 	return (os);
 }
+
+
+Fixed	a(3.14f);
+std::cout << a << std::endl;
 
 int	Fixed::getRawBits(void) const
 {
@@ -56,6 +65,7 @@ Fixed::Fixed(const int n_integer)
 {
 	std::cout << "Int constructor called" << std::endl;
 	_n = n_integer << _bits;
+	// n * 2^8 pour transformer mon int en valeur fixe
 }
 
 Fixed::Fixed(const float n_float)

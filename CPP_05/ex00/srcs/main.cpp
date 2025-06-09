@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:52:55 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/30 16:29:30 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:16:24 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(void)
 	try
 	{
 		Bureaucrat	g("Gamma", 3);
-		std::cout << g;
+		std::cout << g << "I Love CPP" << g << std::endl;
 	}
 	catch(const std::exception& e)
 	{
