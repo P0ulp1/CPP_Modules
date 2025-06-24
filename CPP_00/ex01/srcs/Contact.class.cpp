@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:12:50 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/24 12:56:37 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:33:43 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	Contact::info_long(void)
 	else
 		std::cout << std::setw(10) << this->_phone << "|";
 	if (this->_secret.length() > 10)
-		std::cout << std::setw(10) << this->_secret.substr(0, 9) + "." << "|";
+		std::cout << std::setw(10) << this->_secret.substr(0, 9) + "." << "|" << std::endl;
 	else
 		std::cout << std::setw(10) << this->_secret << "|" << std::endl;
 	std::cout << "\\------------------------------------------------------/" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:01:49 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/24 12:26:16 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:33:20 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	main(int argc, char **argv)
 				else
 					std::cout << argv[i][j];
 			}
-			if (argv[i + 1])
-				std::cout << " ";
 		}
 		std::cout << std::endl;
 	}

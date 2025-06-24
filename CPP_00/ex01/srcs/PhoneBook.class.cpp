@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:28:44 by phautena          #+#    #+#             */
-/*   Updated: 2025/04/10 16:23:02 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:35:04 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ void	PhoneBook::search_contact(void)
 	{
 		std::cout << std::endl << "Index > ";
 		std::getline(std::cin, index);
-		if (!isdigit(index[0]) || index.length() > 1)
-			std::cout << "Bad format. Please enter an index (1 - 8)" << std::endl;
-		else if (std::cin.eof())
+		if (std::cin.eof())
 		{
 			index.clear();
-			std::cout << "Thanks for using this PhoneBook. Goodbye!" << std::endl;
+			std::cout << "\nThanks for using this PhoneBook. Goodbye!" << std::endl;
 			exit(0);
 		}
+		else if (!isdigit(index[0]) || index.length() > 1)
+			std::cout << "Bad format. Please enter an index (1 - 8)" << std::endl;
 		else
 		{
 			choice = atoi(index.c_str());
