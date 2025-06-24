@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:01:49 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/20 12:10:51 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:26:16 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 			if (argv[i + 1])
 				std::cout << " ";
 		}
+		std::cout << std::endl;
 	}
 	else
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 14:24:29 by ubuntu            #+#    #+#             */
-/*   Updated: 2025/04/10 16:23:59 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:43:39 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class	Contact {
 		void	info_short(int index);
 		void	info_long(void);
 		void	set_info(void);
+		void	set_field(std::string field_name, std::string &_field);
 
 	private:
 		std::string	_fname;

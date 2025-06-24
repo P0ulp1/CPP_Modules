@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:12:50 by phautena          #+#    #+#             */
-/*   Updated: 2025/04/10 16:26:19 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:56:37 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,68 +22,37 @@ Contact::~Contact(void)
 	return;
 }
 
+void	Contact::set_field(std::string field_name, std::string &_field)
+{
+	std::cout << field_name;
+	while (std::getline(std::cin, _field) && !std::cin.eof())
+	{
+		int	err = 0;
+		if (field_name == "Phone Number: ")
+		{
+			for (size_t i = 0; i < _field.length(); i++)
+			{
+				if (_field[i] < 48 || _field[i] > 57)
+					err = 1;
+			}
+		}
+		if (!_field.empty() && _field.find('\033') == std::string::npos && err != 1)
+			return ;
+		std::cout << "Field doesn't accept some of the provided input. Please enter a correct value." << std::endl;
+		std::cout << field_name;
+	}
+	_field.clear();
+	std::cout << std::endl << "Thanks for using this PhoneBook. Goodbye!" << std::endl;
+	exit(0);
+}
+
 void	Contact::set_info(void)
 {
-	std::cout << "First Name: ";
-	while (std::getline(std::cin, this->_fname), this->_fname.empty())
-	{
-		if (std::cin.eof())
-		{
-			this->_fname.clear();
-			std::cout << std::endl << "Thanks for using this PhoneBook. Goodbye!" << std::endl;
-			exit(0);
-		}
-		std::cout << "Field cannot be empty. Please enter a value." << std::endl;
-		std::cout << "First Name: ";
-	}
-	std::cout << "Last Name: ";
-	while (std::getline(std::cin, this->_lname), this->_lname.empty())
-	{
-		if (std::cin.eof())
-		{
-			this->_lname.clear();
-			std::cout << std::endl << "Thanks for using this PhoneBook. Goodbye!" << std::endl;
-			exit(0);
-		}
-		std::cout << "Field cannot be empty. Please enter a value." << std::endl;
-		std::cout << "Last Name: ";
-	}
-	std::cout << "Nickname: ";
-	while (std::getline(std::cin, this->_nname), this->_nname.empty())
-	{
-		if (std::cin.eof())
-		{
-			this->_nname.clear();
-			std::cout << std::endl << "Thanks for using this PhoneBook. Goodbye!" << std::endl;
-			exit(0);
-		}
-		std::cout << "Field cannot be empty. Please enter a value." << std::endl;
-		std::cout << "Nickname: ";
-	}
-	std::cout << "Phone Number: ";
-	while (std::getline(std::cin, this->_phone), this->_phone.empty())
-	{
-		if (std::cin.eof())
-		{
-			this->_phone.clear();
-			std::cout << std::endl << "Thanks for using this PhoneBook. Goodbye!" << std::endl;
-			exit(0);
-		}
-		std::cout << "Field cannot be empty. Please enter a value." << std::endl;
-		std::cout << "Phone Number: ";
-	}
-	std::cout << "Darkest Secret: ";
-	while (std::getline(std::cin, this->_secret), this->_secret.empty())
-	{
-		if (std::cin.eof())
-		{
-			this->_secret.clear();
-			std::cout << std::endl << "Thanks for using this PhoneBook. Goodbye!" << std::endl;
-			exit(0);
-		}
-		std::cout << "Field cannot be empty. Please enter a value." << std::endl;
-		std::cout << "Darkest Secret: ";
-	}
+	set_field("First Name: ", _fname);
+	set_field("Last Name: ", _lname);
+	set_field("Nickname: ", _nname);
+	set_field("Phone Number: ", _phone);
+	set_field("Darkest Secret: ", _secret);
 }
 
 void	Contact::info_short(int index)
