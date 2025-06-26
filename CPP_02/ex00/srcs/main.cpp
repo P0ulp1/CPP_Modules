@@ -6,11 +6,11 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:25 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/12 15:50:02 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/26 14:15:32 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../includes/Fixed.hpp"
 
 int	main(void)
 {

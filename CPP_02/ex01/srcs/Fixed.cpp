@@ -6,72 +6,59 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/05 17:12:53 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/26 16:03:12 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Fixed.hpp"
 
-//But : encoder un float en un e valeur entiere => VALEUR FIXE
-//3.75 * 2^8 = 960.
-//3 << 4 = 3 * 2^4 = 3 * 16 = 48
-// 48 >> 4 = 48 / 2^4 = 48 / 16 = 3
-
-Fixed::Fixed(void): _n(0)
+Fixed::Fixed(void) : _n(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Fixed default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int value) : _n(value << _bits)
+{
+	std::cout << "Fixed int constructor called" << std::endl;
+	//value * 2^8
+}
+
+Fixed::Fixed(const float value) : _n(static_cast<int>(roundf(value * (1 << _bits))))
+{
+	std::cout << "Fixed float constructor called" << std::endl;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Fixed destructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed const & src)
+Fixed::Fixed(const Fixed &copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	std::cout << "Fixed copy constructor called" << std::endl;
+	_n = copy._n;
 }
 
-Fixed&	Fixed::operator=(Fixed const & rhs)
+Fixed	&Fixed::operator=(const Fixed &rhs)
 {
-	std::cout << "Copy assignement operator called" << std::endl;
+	std::cout << "Fixed assignement operator overload called" << std::endl;
 	if (this != &rhs)
-		this->_n = rhs._n;
+	{
+		_n = rhs._n;
+	}
 	return (*this);
 }
 
-std::ostream&	operator<<(std::ostream& os, const Fixed &copy)
-{
-	os << copy.toFloat();
-	return (os);
-}
-
-
-Fixed	a(3.14f);
-std::cout << a << std::endl;
-
 int	Fixed::getRawBits(void) const
 {
-	return (this->_n);
+	std::cout << "getRawBits member function called" << std::endl;
+	return (_n);
 }
 
-void	Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(const int raw)
 {
-	this->_n = raw;
-}
-
-Fixed::Fixed(const int n_integer)
-{
-	std::cout << "Int constructor called" << std::endl;
-	_n = n_integer << _bits;
-	// n * 2^8 pour transformer mon int en valeur fixe
-}
-
-Fixed::Fixed(const float n_float)
-{
-	std::cout << "Float constructor called" << std::endl;
-	_n = roundf(n_float * (1 << _bits));
+	std::cout << "setRawBits member function called" << std::endl;
+	_n = raw;
 }
 
 float	Fixed::toFloat(void) const
@@ -79,8 +66,13 @@ float	Fixed::toFloat(void) const
 	return (float)_n / (1 << _bits);
 }
 
-int	Fixed::toInt(void) const
+int		Fixed::toInt(void) const
 {
 	return (_n >> _bits);
 }
 
+std::ostream	&operator<<(std::ostream &os, const Fixed &rhs)
+{
+	os << rhs.toFloat();
+	return (os);
+}

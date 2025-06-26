@@ -6,45 +6,46 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/04 16:45:15 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/26 14:28:44 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../includes/Fixed.hpp"
 
-Fixed::Fixed(void): _n(0)
+Fixed::Fixed(void) : _n(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Fixed default constructor called" << std::endl;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Fixed destructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed const & src)
+Fixed::Fixed(const Fixed &copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	std::cout << "Fixed copy constructor called" << std::endl;
+	_n = copy._n;
 }
 
-Fixed&	Fixed::operator=(Fixed const & rhs)
+Fixed	&Fixed::operator=(const Fixed &rhs)
 {
-	std::cout << "Copy assignement operator called" << std::endl;
+	std::cout << "Fixed assignement operator overload called" << std::endl;
 	if (this != &rhs)
-		this->_n = rhs.getRawBits();
+	{
+		_n = rhs._n;
+	}
 	return (*this);
 }
 
 int	Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->_n);
+	return (_n);
 }
 
-void	Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(const int raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
-	this->_n = raw;
+	_n = raw;
 }
-

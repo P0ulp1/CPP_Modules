@@ -6,11 +6,14 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:21 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/14 13:38:20 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/26 14:28:54 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef FIXED_HPP
+# define FIXED_HPP
+
+# include <iostream>
 
 class	Fixed
 {
@@ -21,8 +24,10 @@ class	Fixed
 	public:
 		Fixed(void);
 		~Fixed(void);
-		Fixed(Fixed const & src);
-		Fixed&	operator=(Fixed const & rhs);
+		Fixed(const Fixed &copy);
+		Fixed	&operator=(const Fixed &rhs);
 		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
+		void	setRawBits(const int raw);
 };
+
+#endif
