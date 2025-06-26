@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:09:42 by ubuntu            #+#    #+#             */
-/*   Updated: 2025/06/26 13:45:39 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/26 14:10:58 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,18 @@ int	read_and_write(std::string filename, std::string s1, std::string s2)
 		return (2);
 	}
 
-	while (1)
+	std::string line;
+	size_t res = 0;
+	while (getline(before, line))
 	{
-		if (before.eof())
-		{
-			std::cout << "Reached End Of File." << std::endl;
-			return (0);
-		}
-		std::string line;
-		getline(before, line);
-		size_t res = 0;
-		while ((res = line.find(s1)) != std::string::npos)
+		res = 0;
+		while ((res = line.find(s1, res)) != std::string::npos)
 		{
 			line.erase(res, s1.length());
 			line.insert(res, s2);
+			res += s2.length();
 		}
-		after << line;
-		if (!before.eof())
-			after << "\n";
+		after << line << "\n";
 	}
 	return (0);
 }
