@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:09:42 by ubuntu            #+#    #+#             */
-/*   Updated: 2025/05/08 17:09:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2025/06/26 13:45:39 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,12 @@ int	read_and_write(std::string filename, std::string s1, std::string s2)
 	return (0);
 }
 
-int	check_string(std::string filename, std::string s1, std::string s2)
+int	check_string(std::string filename, std::string s1)
 {
 	if (filename.empty() == true)
 		return (1);
 	if (s1.empty() == true)
 		return (2);
-	if (s2.empty() == true)
-		return (3);
 	return (0);
 }
 
@@ -76,7 +74,7 @@ int	main(int argc, char* argv[])
 	std::string	s1 = argv[2];
 	std::string	s2 = argv[3];
 
-	if (check_string(filename, s1, s2) != 0)
+	if (check_string(filename, s1) != 0)
 	{
 		std::cerr << "Error: Please enter correct strings." << std::endl;
 		return (2);
