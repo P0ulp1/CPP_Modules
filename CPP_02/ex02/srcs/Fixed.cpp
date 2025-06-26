@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/26 17:17:30 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:48:36 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ Fixed::Fixed(void) : _n(0)
 Fixed::Fixed(const int value) : _n(value << _bits)
 {
 	std::cout << "Fixed int constructor called" << std::endl;
-	//value * 2^8
 }
 
 Fixed::Fixed(const float value) : _n(static_cast<int>(roundf(value * (1 << _bits))))
@@ -103,52 +102,61 @@ bool	Fixed::operator!=(const Fixed &rhs) const
 
 Fixed	Fixed::operator+(const Fixed &rhs)
 {
-	return (Fixed(_n + rhs._n));
+	Fixed	res(this->toFloat() + rhs.toFloat());
+	return (res);
 }
 
 Fixed	Fixed::operator-(const Fixed &rhs)
 {
-	return (Fixed(_n - rhs._n));
+	Fixed	res(this->toFloat() - rhs.toFloat());
+	return (res);
 }
 
 Fixed	Fixed::operator*(const Fixed &rhs)
 {
-	return (Fixed(_n * rhs._n));
+	Fixed	res(this->toFloat() * rhs.toFloat());
+	return (res);
 }
 
 Fixed	Fixed::operator/(const Fixed &rhs)
 {
-	return (Fixed(_n / rhs._n));
+	Fixed	res(this->toFloat() / rhs.toFloat());
+	return (res);
 }
 
 Fixed	&Fixed::operator++()
 {
-	_n++;
+	this->_n = this->_n + (1 << _bits);
 	return (*this);
 }
 
 Fixed	Fixed::operator++(int)
 {
 	Fixed	temp(*this);
-	++_n;
+	this->_n = this->_n + (1 << _bits);
 	return (temp);
 }
 
 Fixed	&Fixed::operator--()
 {
-	_n--;
+	this->_n = this->_n - (1 << _bits);
 	return (*this);
 }
 
 Fixed	Fixed::operator--(int)
 {
 	Fixed	temp(*this);
-	--_n;
+	this->_n = this->_n - (1 << _bits);
 	return (temp);
 }
 
 Fixed	&Fixed::min(Fixed &a, Fixed &b)
 {
+	if (&a == &b)
+	{
+		std::cout << "Same instance, returning first instance" << std::endl;
+		return (a);
+	}
 	if (a > b)
 		return (b);
 	return (a);
@@ -156,6 +164,11 @@ Fixed	&Fixed::min(Fixed &a, Fixed &b)
 
 const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
 {
+	if (&a == &b)
+	{
+		std::cout << "Same instance, returning first instance" << std::endl;
+		return (a);
+	}
 	if (a > b)
 		return (b);
 	return (a);
@@ -163,6 +176,11 @@ const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
 
 Fixed	&Fixed::max(Fixed &a, Fixed &b)
 {
+	if (&a == &b)
+	{
+		std::cout << "Same instance, returning first instance" << std::endl;
+		return (a);
+	}
 	if (a > b)
 		return (a);
 	return (b);
@@ -170,6 +188,11 @@ Fixed	&Fixed::max(Fixed &a, Fixed &b)
 
 const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 {
+	if (&a == &b)
+	{
+		std::cout << "Same instance, returning first instance" << std::endl;
+		return (a);
+	}
 	if (a > b)
 		return (a);
 	return (b);

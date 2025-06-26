@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:25 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/26 16:02:58 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:45:52 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int	main(void)
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+
+	Fixed	e(42);
+	std::cout << "e is " << e << std::endl;
+	--e;
+	std::cout << "e is " << e << std::endl;
 
 	return (0);
 }
