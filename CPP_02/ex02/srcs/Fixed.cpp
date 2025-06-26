@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/26 18:48:36 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:07:10 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	Fixed::setRawBits(const int raw)
 
 float	Fixed::toFloat(void) const
 {
-	return (float)_n / (1 << _bits);
+	return (static_cast<float>(_n) / (1 << _bits));
 }
 
 int		Fixed::toInt(void) const
