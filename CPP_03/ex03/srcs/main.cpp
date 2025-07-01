@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:17:29 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/01 15:03:04 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:51:00 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	main(void)
 {
 	DiamondTrap	*bob = new DiamondTrap("Bob");
 	bob->whoAmI();
-
-	DiamondTrap	*test = new DiamondTrap();
-	test->whoAmI();
+	bob->attack("Iggy");
 
 	return (0);
 }

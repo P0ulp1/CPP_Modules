@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:02:05 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/01 14:51:10 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:50:33 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	DiamondTrap : public ScavTrap, public FragTrap
 		~DiamondTrap(void);
 
 		void	whoAmI(void);
+		void	attack(const std::string &target);
 };
 
 #endif

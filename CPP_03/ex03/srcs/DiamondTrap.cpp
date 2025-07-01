@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:05:10 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/01 15:02:47 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:51:37 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,9 @@ DiamondTrap::~DiamondTrap(void)
 void	DiamondTrap::whoAmI(void)
 {
 	std::cout << "DiamondTrap name: " << _name << "   ClapTrap name: " << ClapTrap::_name << std::endl;
+}
+
+void	DiamondTrap::attack(const std::string& target)
+{
+	ScavTrap::attack(target);
 }
