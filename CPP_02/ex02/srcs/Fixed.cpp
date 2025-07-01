@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/26 19:07:10 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:23:32 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,27 +126,27 @@ Fixed	Fixed::operator/(const Fixed &rhs)
 
 Fixed	&Fixed::operator++()
 {
-	this->_n = this->_n + (1 << _bits);
+	this->_n++;
 	return (*this);
 }
 
 Fixed	Fixed::operator++(int)
 {
 	Fixed	temp(*this);
-	this->_n = this->_n + (1 << _bits);
+	this->_n++;
 	return (temp);
 }
 
 Fixed	&Fixed::operator--()
 {
-	this->_n = this->_n - (1 << _bits);
+	this->_n--;
 	return (*this);
 }
 
 Fixed	Fixed::operator--(int)
 {
 	Fixed	temp(*this);
-	this->_n = this->_n - (1 << _bits);
+	this->_n--;
 	return (temp);
 }
 

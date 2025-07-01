@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:12:50 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/24 13:33:43 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:00:50 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	Contact::info_short(int index)
 	else
 		std::cout << std::setw(10) << this->_lname << "|";
 	if (this->_nname.length() > 10)
-		std::cout << std::setw(10) << this->_nname.substr(0, 9) + "." << "|";
+		std::cout << std::setw(10) << this->_nname.substr(0, 9) + "." << "|" << std::endl;
 	else
 		std::cout << std::setw(10) << this->_nname << "|" << std::endl;
 }
