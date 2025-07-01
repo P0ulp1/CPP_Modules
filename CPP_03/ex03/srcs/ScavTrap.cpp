@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 15:18:15 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/20 15:51:37 by phautena         ###   ########.fr       */
+/*   Created: 2025/07/01 12:23:41 by phautena          #+#    #+#             */
+/*   Updated: 2025/07/01 14:55:40 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,42 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
-	_name = "default";
+	std::cout << "ScavTrap default constructor called" << std::endl;
 	_hp = 100;
 	_ep = 50;
 	_atk = 20;
-	std::cout << "ScavTrap " << _name << " has been created" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 {
+	std::cout << "ScavTrap parameterized constructor called" << std::endl;
 	_name = name;
 	_hp = 100;
 	_ep = 50;
 	_atk = 20;
-	std::cout << "ScavTrap " << _name << " has been created" << std::endl;
 }
 
-ScavTrap::~ScavTrap(void)
+ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 {
-	std::cout << "ScavTrap " << _name << "has been destroyed" << std::endl;
+	std::cout << "ScavTrap copy constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
+ScavTrap&	ScavTrap::operator=(const ScavTrap &rhs)
 {
-
-}
-
-ScavTrap	&ScavTrap::operator=(const ScavTrap &rhs)
-{
+	std::cout << "ScavTrap assignement operator overload called" << std::endl;
 	if (this != &rhs)
 	{
-		_name = rhs._name;
-		_hp = rhs._hp;
-		_ep = rhs._ep;
-		_atk = rhs._atk;
+		ClapTrap::operator=(rhs);
 	}
 	return (*this);
 }
 
-void	ScavTrap::attack(const std::string &target)
+ScavTrap::~ScavTrap(void)
 {
-	if (_ep >= 1 && _hp > 0)
-	{
-		_ep--;
-		std::cout << "ScavTrap " << _name << " attacks " << target << " with great violence! (" << _atk << "ATK)" << std::endl;
-	}
-	else if (_hp <= 0)
-		std::cout << "ScavTrap " << _name << " cannot attack because he is already dead" << std::endl;
-	else
-		std::cout << "ScavTrap " << _name << "cannot attack because he doesn't have any EP left" << std::endl;
+	std::cout << "ScavTrap destructor called" << std::endl;
 }
 
 void	ScavTrap::guardGate(void)
 {
-	std::cout << "ScavTrap " << _name << " is now is gate keeping mode" << std::endl;
+	std::cout << "ScavTrap " << _name << " is now in GateKeeper mode" << std::endl;
 }

@@ -5,27 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 16:02:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/20 16:06:38 by phautena         ###   ########.fr       */
+/*   Created: 2025/07/01 13:52:02 by phautena          #+#    #+#             */
+/*   Updated: 2025/07/01 13:53:26 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAG_TRAP_HPP
-# define FRAG_TRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-# include "../includes/ScavTrap.hpp"
+# include "../includes/ClapTrap.hpp"
 
-class	FragTrap : public ClapTrap
+class FragTrap : public ClapTrap
 {
-	private:
-
 	public:
 		FragTrap(void);
-		FragTrap(std::string name);
-		~FragTrap(void);
-		FragTrap(const FragTrap &copy);
+		FragTrap(const std::string& name);
+		FragTrap(const FragTrap& copy);
 		FragTrap	&operator=(const FragTrap &rhs);
-		void		highFivesGuys(void);
+		~FragTrap(void);
+
+		void	highFiveGuys(void);
 };
 
 #endif

@@ -5,25 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 15:53:48 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/20 16:35:59 by phautena         ###   ########.fr       */
+/*   Created: 2025/07/01 12:17:29 by phautena          #+#    #+#             */
+/*   Updated: 2025/07/01 14:01:16 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/ClapTrap.hpp"
+#include "../includes/ScavTrap.hpp"
 #include "../includes/FragTrap.hpp"
 
 int	main(void)
 {
-	ClapTrap	Bob("B0b");
-	ScavTrap	Gerald("G3r4ld");
-	FragTrap	Killer("K1ller");
-	FragTrap	Killer2;
+	FragTrap	bob("Bob");
+	FragTrap	arnold("Arnold");
 
-	Gerald.guardGate();
-	Bob.attack("G3r4ld");
-	Gerald.beRepaired(2);
-	Gerald.attack("B0b");
-	Killer.highFivesGuys();
-	Killer2 = Killer;
-	Killer2.attack("a damaged bot");
+	bob.takeDamage(50);
+	arnold = bob;
+	arnold.beRepaired(50);
+	arnold.highFiveGuys();
+
+	return (0);
 }

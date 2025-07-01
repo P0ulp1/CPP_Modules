@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 15:53:48 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/20 15:53:41 by phautena         ###   ########.fr       */
+/*   Created: 2025/07/01 12:17:29 by phautena          #+#    #+#             */
+/*   Updated: 2025/07/01 12:18:23 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,11 @@
 
 int	main(void)
 {
-	ClapTrap	Bob("B0b");
-	ClapTrap	Destructor("The D3struct0r");
+	ClapTrap	bob("Bob");
 
-	Destructor.attack("A random piece of junk");
-	Bob.takeDamage(5);
-	Bob.beRepaired(2);
+	bob.attack("Piece of junk");
+	bob.takeDamage(2);
+	bob.beRepaired(2);
 
-	ClapTrap	Savior("S4vi0r");
-
-	Savior.attack("Destructor");
-	Savior.takeDamage(6);
-	Savior.beRepaired(3);
-	Savior.attack("Destructor");
+	return (0);
 }

@@ -6,13 +6,13 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/05/20 16:03:50 by phautena         ###   ########.fr        #
+#    Updated: 2025/07/01 14:02:00 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = FragTrap
+NAME = DiamondTrap
 
-SRCS = ./srcs/main.cpp ./srcs/ClapTrap.cpp ./srcs/ScavTrap.cpp ./srcs/FragTrap.cpp
+SRCS = ./srcs/main.cpp ./srcs/ClapTrap.cpp ./srcs/ScavTrap.cpp ./srcs/FragTrap.cpp ./srcs/DiamondTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++

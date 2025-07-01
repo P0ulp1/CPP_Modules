@@ -5,28 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 15:17:30 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/20 15:55:29 by phautena         ###   ########.fr       */
+/*   Created: 2025/07/01 12:20:18 by phautena          #+#    #+#             */
+/*   Updated: 2025/07/01 13:44:33 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-# define SCAV_TRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 # include "../includes/ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap
+class ScavTrap : public ClapTrap
 {
-	private:
-
 	public:
 		ScavTrap(void);
-		ScavTrap(std::string name);
+		ScavTrap(const std::string& name);
+		ScavTrap(const ScavTrap& copy);
+		ScavTrap	&operator=(const ScavTrap& rhs);
 		~ScavTrap(void);
-		ScavTrap(const ScavTrap &copy);
-		ScavTrap	&operator=(const ScavTrap &rhs);
-		void		attack(const std::string &target);
-		void		guardGate(void);
-};
 
+		void	guardGate(void);
+};
 #endif
