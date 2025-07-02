@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:20:18 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/01 13:44:33 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:48:25 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ class ScavTrap : public ClapTrap
 		~ScavTrap(void);
 
 		void	guardGate(void);
+		void	attack(const std::string& target);
 };
 #endif

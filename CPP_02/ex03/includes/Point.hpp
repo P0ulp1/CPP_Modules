@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 15:09:05 by ubuntu            #+#    #+#             */
-/*   Updated: 2025/07/01 16:48:34 by phautena         ###   ########.fr       */
+/*   Created: 2025/07/02 12:36:10 by phautena          #+#    #+#             */
+/*   Updated: 2025/07/02 13:07:51 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#ifndef POINT_HPP
+# define POINT_HPP
 
-Zombie	*zombieHorde(int N, std::string name)
+# include "../includes/Fixed.hpp"
+
+class	Point
 {
-	Zombie	*horde = new Zombie[N];
+	private:
+		Fixed	_x;
+		Fixed	_y;
 
-	for (int i = 0; i < N; i++) {
-		horde[i].set_name(name);
-	}
+	public:
+		Point(void);
+		Point(const float x, const float y);
+		Point(const Point& copy);
+		Point&	operator=(const Point& rhs);
+		~Point(void);
 
-	return (horde);
-}
+		Fixed	getX(void) const;
+		Fixed	getY(void) const;
+};
+
+bool	bsp(Point const a, Point const b, Point const c, Point const point);
+
+#endif

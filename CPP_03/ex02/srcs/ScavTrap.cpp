@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:23:41 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/01 13:57:39 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:49:07 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,9 @@ ScavTrap::~ScavTrap(void)
 void	ScavTrap::guardGate(void)
 {
 	std::cout << "ScavTrap " << _name << " is now in GateKeeper mode" << std::endl;
+}
+
+void	ScavTrap::attack(const std::string& target)
+{
+	std::cout << "ScavTrap " << _name << " attacks " << target << " with " << _atk << "ATK" << std::endl;
 }

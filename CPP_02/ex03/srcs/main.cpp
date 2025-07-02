@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 15:09:05 by ubuntu            #+#    #+#             */
-/*   Updated: 2025/07/01 16:48:34 by phautena         ###   ########.fr       */
+/*   Created: 2025/07/02 12:34:53 by phautena          #+#    #+#             */
+/*   Updated: 2025/07/02 13:39:26 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#include "../includes/Point.hpp"
 
-Zombie	*zombieHorde(int N, std::string name)
+int	main(void)
 {
-	Zombie	*horde = new Zombie[N];
+	Point	p1(0.0f, 0.0f);
+	Point	p2(10.0f, 30.0f);
+	Point	p3(20.0f, 0.0f);
+	Point	pX(30.0f, 15.0f);
 
-	for (int i = 0; i < N; i++) {
-		horde[i].set_name(name);
-	}
-
-	return (horde);
+	if (bsp(p1, p2, p3, pX) == true)
+		std::cout << "Point is in triangle" << std::endl;
+	else
+		std::cout << "Point is NOT in triangle" << std::endl;
 }
