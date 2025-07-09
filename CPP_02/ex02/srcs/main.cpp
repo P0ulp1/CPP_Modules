@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:25 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/26 18:45:52 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:18:04 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	main(void)
 	std::cout << "e is " << e << std::endl;
 	--e;
 	std::cout << "e is " << e << std::endl;
+
+	std::cout << "e+e is: " << e + e << std::endl;
 
 	return (0);
 }

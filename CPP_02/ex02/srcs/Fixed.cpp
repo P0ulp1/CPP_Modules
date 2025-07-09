@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/01 15:23:32 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:28:01 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,13 @@ const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 
 std::ostream	&operator<<(std::ostream &os, const Fixed &rhs)
 {
-	os << rhs.toFloat();
+	os << rhs.toFloat() << "djwioajdoiwajdiowajd";
 	return (os);
 }
+
+a = 3;
+a++;
+
+a_copy = 3;
+
+a = 4;

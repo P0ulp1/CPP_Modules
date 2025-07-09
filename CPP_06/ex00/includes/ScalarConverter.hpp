@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:05:54 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/09 16:42:21 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:36:58 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <string>
 # include <cstdlib>
 # include <limits>
+# include <iomanip>
+# include <cmath>
 
 # define INT_MAX	2147483647
 # define INT_MIN	-2147483648
@@ -32,7 +34,14 @@ class ScalarConverter
 		static void	convert(const std::string str);
 };
 
-bool	isInt(const std::string str);
-bool	isFloat(const std::string str);
+bool		isChar(const std::string str);
+bool		isInt(const std::string str);
+bool		isFloat(const std::string str);
+bool		isDouble(const std::string str);
+
+void		printChar(const char c);
+void		printInt(const int i);
+void		printFloat(const float f);
+void		printDouble(const double d);
 
 #endif

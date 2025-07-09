@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:02:59 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/01 12:08:29 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:40:28 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,4 @@ class	ClapTrap
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 };
-
-
 #endif
