@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:18:17 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/09 15:33:53 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:55:14 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 
 class	Serialize
 {
-	public:
+	private:
 		Serialize(void);
 		Serialize(const Serialize& copy);
 		Serialize	&operator=(const Serialize& rhs);
-		virtual ~Serialize(void) = 0;
+		virtual ~Serialize(void);
 
+	public:
 		static uintptr_t	serialize(Data *ptr);
 		static Data*		deserialize(uintptr_t raw);
 };
