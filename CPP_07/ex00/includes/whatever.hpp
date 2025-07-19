@@ -1,32 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 15:01:09 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/18 17:27:23 by phautena         ###   ########.fr       */
+/*   Created: 2025/07/19 13:36:29 by phautena          #+#    #+#             */
+/*   Updated: 2025/07/19 14:45:40 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
-# include <string>
 # include <iostream>
-# include "AMateria.hpp"
+# include <string>
 
-class	AMateria;
-
-class ICharacter
+template<typename T>
+void	swap(T& a, T& b)
 {
-	public:
-		virtual ~ICharacter(void) {}
-		virtual std::string const & getName(void) const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter &target) = 0;
-};
+	T	temp;
+
+	temp = a;
+	a = b;
+	b = temp;
+}
+
+template<typename T>
+T	min(T a, T b)
+{
+	if (a == b)
+		return (b);
+	else if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+template<typename T>
+T	max(T a, T b)
+{
+	if (a == b)
+		return (b);
+	else if (a < b)
+		return (b);
+	else
+		return (a);
+}
 
 #endif

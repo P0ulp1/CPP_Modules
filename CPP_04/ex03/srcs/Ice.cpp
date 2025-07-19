@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:46:37 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/27 16:50:20 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:26:14 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Ice::~Ice(void)
 AMateria	*Ice::clone(void) const
 {
 	std::cout << "Cloning Ice Materia" << std::endl;
-	return (new Ice(*this));
+	return (new Ice());
 }
 
 void	Ice::use(ICharacter &target)
