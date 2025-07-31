@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 14:02:42 by p0ulp1            #+#    #+#             */
-/*   Updated: 2025/06/04 16:02:19 by phautena         ###   ########.fr       */
+/*   Updated: 2025/07/31 17:47:39 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class	AForm
 		AForm(const std::string name, const int gradeSign, const int gradeExec);
 		AForm(const AForm &copy);
 		AForm	&operator=(const AForm &rhs);
-		~AForm(void);
+		virtual ~AForm(void);
 
 		std::string	getName(void) const;
 		bool		getSigned(void) const;
