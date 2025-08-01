@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:53:37 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/04 16:12:44 by phautena         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:24:59 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,18 @@ int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::increaseGrade(void)
 {
-	_grade--;
+	if (_grade == 1)
+		throw GradeTooHighException();
+	else
+		_grade--;
 }
 
 void	Bureaucrat::decreaseGrade(void)
 {
-	_grade++;
+	if (_grade == 150)
+		throw GradeTooLowException();
+	else
+		_grade++;
 }
 
 void	Bureaucrat::signForm(AForm &f)

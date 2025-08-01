@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:52:55 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/31 17:47:13 by phautena         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:32:20 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(void)
 	std::cout <<"--------------ALL OF THIS SHOULD NOT WORK--------------" << std::endl;
 	//Kumar has not the required grade to Sign/Exec the forms
 	Kumar.signForm(*f1);
-	Harold.signForm(*f1); //Works, just to show that Kumar doesnt have the required grade
 	Kumar.executeForm(*f1);
 
 	//Harold can't execute the form because it's not signed

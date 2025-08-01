@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:52:55 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/05 17:16:24 by phautena         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:24:04 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,27 @@ int	main(void)
 		std::cout << e.what() << std::endl;
 	}
 
+	//Increasing grade above 1
+	try
+	{
+		Bureaucrat	c("Cedilla", 1);
+		c.increaseGrade();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+
 	//FINE GRADE
 	try
 	{
 		Bureaucrat	g("Gamma", 3);
-		std::cout << g << "I Love CPP" << g << std::endl;
+		std::cout << g << "I Love CPP " << g << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << '\n';
+		std::cout << e.what() << std::endl;
 	}
 
 	return (42);

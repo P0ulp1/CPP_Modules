@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:53:37 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/05 17:18:54 by phautena         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:20:58 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,18 @@ int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::increaseGrade(void)
 {
-	_grade--;
+	if (_grade == 1)
+		throw GradeTooHigh();
+	else
+		_grade--;
 }
 
 void	Bureaucrat::decreaseGrade(void)
 {
-	_grade++;
+	if (_grade == 150)
+		throw GradeTooLow();
+	else
+		_grade++;
 }
 
 const char	*Bureaucrat::GradeTooHigh::what() const throw()

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p0ulp1 <p0ulp1@student.42.fr>              +#+  +:+       +#+        */
+/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:53:37 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/31 14:47:06 by p0ulp1           ###   ########.fr       */
+/*   Updated: 2025/08/01 13:26:47 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name)
 {
-	std::cout << "Bureaucrat copy constructor called" << std::endl; 
+	std::cout << "Bureaucrat copy constructor called" << std::endl;
 	_grade = copy._grade;
 }
 
@@ -57,12 +57,18 @@ int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::increaseGrade(void)
 {
-	_grade--;
+	if (_grade == 1)
+		throw GradeTooHighException();
+	else
+		_grade--;
 }
 
 void	Bureaucrat::decreaseGrade(void)
 {
-	_grade++;
+	if (_grade == 150)
+		throw GradeTooLowException();
+	else
+		_grade++;
 }
 
 void	Bureaucrat::signForm(Form &f)
