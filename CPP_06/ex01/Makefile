@@ -6,11 +6,11 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/07/09 15:34:19 by phautena         ###   ########.fr        #
+#    Updated: 2025/09/03 13:47:17 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cast
+NAME = serialize
 
 SRCS = ./srcs/main.cpp ./srcs/Serialize.cpp
 OBJS = $(SRCS:.cpp=.o)
