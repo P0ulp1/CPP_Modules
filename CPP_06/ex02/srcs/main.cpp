@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 17:15:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/15 17:26:32 by phautena         ###   ########.fr       */
+/*   Updated: 2025/09/04 13:46:12 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(void)
 
 	identify(p);
 	identify(r);
+
+	delete p;
 
 	return (42);
 }

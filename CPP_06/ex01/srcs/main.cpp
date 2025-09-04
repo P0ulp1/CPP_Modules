@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:18:03 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/09 15:38:09 by phautena         ###   ########.fr       */
+/*   Updated: 2025/09/04 13:44:07 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	main(void)
 
 	std::cout << "Original pointer: " << d << std::endl;
 	std::cout << "Serialized address: " << address << std::endl;
-	std::cout << "After serialization: " << newData << std::endl;
+	std::cout << "Deserialization: " << newData << std::endl;
 
-	std::cout << "First data value: " << d->value << std::endl;
-	std::cout << "New data value: " << newData->value << std::endl;
+	std::cout << "Original data value: " << d->value << std::endl;
+	std::cout << "Serialized data value: " << newData->value << std::endl;
 
 	return (0);
 }

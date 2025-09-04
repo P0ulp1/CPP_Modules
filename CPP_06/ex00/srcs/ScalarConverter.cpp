@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 16:08:00 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/09 14:55:19 by phautena         ###   ########.fr       */
+/*   Updated: 2025/09/04 13:39:16 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void	ScalarConverter::convert(const std::string str)
 	float	fvalue;
 	double	dvalue;
 
-	if (isChar(str) == true)
+	if (str[0] == '\0')
+		std::cout << "Invalid litteral" << std::endl;
+	else if (isChar(str) == true)
 	{
 		cvalue = static_cast<char>(str[0]);
 		printChar(cvalue);
@@ -116,7 +118,7 @@ void	printChar(const char c)
 		std::cout << "char: '" << c << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(c) << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(2) << "double: " << static_cast<double>(c) << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(c) << std::endl;
 }
 
 void	printInt(const int i)
@@ -130,7 +132,7 @@ void	printInt(const int i)
 	else
 		std::cout << "int: " << i << std::endl;
 	std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(i) << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(2) << "double: " << static_cast<double>(i) << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(i) << std::endl;
 }
 
 void	printFloat(const float f)
@@ -152,7 +154,7 @@ void	printFloat(const float f)
 			std::cout << "int: " << static_cast<int>(f) << std::endl;
 	}
 	std::cout << std::fixed << std::setprecision(1) << "float: " << f << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(2) << "double: " << static_cast<double>(f) << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(f) << std::endl;
 }
 
 void	printDouble(const double d)
@@ -174,5 +176,5 @@ void	printDouble(const double d)
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
 	}
 	std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(d) << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(2) << "double: " << d << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << "double: " << d << std::endl;
 }
