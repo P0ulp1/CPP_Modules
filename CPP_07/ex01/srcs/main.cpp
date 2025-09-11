@@ -6,11 +6,16 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2025/09/11 13:43:23 by phautena         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:52:05 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/iter.hpp"
+
+void	printChar(const char c)
+{
+	std::cout << "Char is: " << c << std::endl;
+}
 
 void	upperFirstLetter(std::string &s)
 {
@@ -57,6 +62,13 @@ int	main(void)
 	std::cout << std::endl;
 	for (int i = 0; i < 5; i++)
 		std::cout << "Array[" << i << "] is: " << sarray[i] << std::endl;
+
+	//---------------------------------------------------------------------
+
+	//const char* test
+	std::cout << std::endl;
+	const char *s2 = "this is a test";
+	iter(s2, strlen(s2), printChar);
 
 	return (0);
 }
