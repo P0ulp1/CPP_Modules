@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 13:36:29 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/19 14:45:40 by phautena         ###   ########.fr       */
+/*   Created: 2025/09/05 13:28:31 by phautena          #+#    #+#             */
+/*   Updated: 2025/09/05 13:37:32 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 # define WHATEVER_HPP
 
 # include <iostream>
-# include <string>
 
-template<typename T>
-void	swap(T& a, T& b)
+template <typename T>
+void	swap(T &a, T &b)
 {
 	T	temp;
 
@@ -26,23 +25,23 @@ void	swap(T& a, T& b)
 	b = temp;
 }
 
-template<typename T>
+template <typename T>
 T	min(T a, T b)
 {
-	if (a == b)
-		return (b);
-	else if (a < b)
+	if (a < b)
 		return (a);
-	else
+	else if (b < a)
 		return (b);
+	else
+		return (a);
 }
 
-template<typename T>
+template <typename T>
 T	max(T a, T b)
 {
-	if (a == b)
-		return (b);
-	else if (a < b)
+	if (a > b)
+		return (a);
+	else if (b > a)
 		return (b);
 	else
 		return (a);

@@ -5,27 +5,58 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 13:36:07 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/31 16:40:23 by phautena         ###   ########.fr       */
+/*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
+/*   Updated: 2025/09/11 13:43:23 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/iter.hpp"
-#include <sstream>
 
-void	upChar(char &c)
+void	upperFirstLetter(std::string &s)
 {
-	c = std::toupper(c);
+	if (s[0] && islower(s[0]))
+		s[0] -= 32;
+}
+
+void	add(int &a)
+{
+	a += 1;
 }
 
 int	main(void)
 {
+	//int array test
+	int	array[10];
+	for (int i = 0; i < 10; i++)
+		array[i] = i + 1;
 
-	std::string	str = "This is a string";
+	//int array before iter
+	for (int i = 0; i < 10; i++)
+		std::cout << "Array[" << i << "] is: " << array[i] << std::endl;
 
-	std::cout << "Before iter: " << str << std::endl;
-	iter(&str[0], str.length(), upChar);
-	std::cout << "After iter: " << str << std::endl;
+	iter(array, 10, add);
+
+	//int array after iter
+	std::cout << std::endl;
+	for (int i = 0; i < 10; i++)
+		std::cout << "Array[" << i << "] is: " << array[i] << std::endl;
+	std::cout << std::endl;
+
+	//---------------------------------------------------------------------
+
+	//string array test
+	std::string	sarray[5] = {"alix", "pierre", "erika", "adrien", "seb"};
+
+	//string array before iter
+	for (int i = 0; i < 5; i++)
+		std::cout << "Array[" << i << "] is: " << sarray[i] << std::endl;
+
+	iter(sarray, 5, upperFirstLetter);
+
+	//string array after iter
+	std::cout << std::endl;
+	for (int i = 0; i < 5; i++)
+		std::cout << "Array[" << i << "] is: " << sarray[i] << std::endl;
 
 	return (0);
 }

@@ -5,23 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 14:48:48 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/31 16:25:09 by phautena         ###   ########.fr       */
+/*   Created: 2025/09/05 13:28:31 by phautena          #+#    #+#             */
+/*   Updated: 2025/09/11 13:38:00 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ITER_HPP
 # define ITER_HPP
 
-# include <cstdio>
-# include <string>
 # include <iostream>
+# include <string>
 
-template<typename T, typename F>
-void	iter(T *array, size_t size, F func)
+template <typename T, typename F>
+void	iter(T &array, size_t len, F func)
 {
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < len; i++)
 		func(array[i]);
 }
+
 
 #endif

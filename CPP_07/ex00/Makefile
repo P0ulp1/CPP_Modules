@@ -6,11 +6,11 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/07/19 14:39:55 by phautena         ###   ########.fr        #
+#    Updated: 2025/09/05 13:36:29 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = swap
+NAME = templates
 
 SRCS = ./srcs/main.cpp
 OBJS = $(SRCS:.cpp=.o)
