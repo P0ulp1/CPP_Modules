@@ -6,14 +6,14 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:36:44 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/01 16:22:29 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:56:08 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array.hpp"
 
 template <typename T>
-Array<T>::Array(void) : _size(0), _array(NULL)
+Array<T>::Array(void) : _size(0), _array(new T[0])
 {
 	std::cout << "Array default constructor called" << std::endl;
 }
