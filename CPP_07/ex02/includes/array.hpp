@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:31 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/01 16:18:09 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:22:24 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class	Array
 
 		unsigned int	size(void) const;
 		T				&operator[](unsigned int idx);
+		const T			&operator[](unsigned int idx) const;
 
 		class IndexOutOfBound : public std::exception
 		{

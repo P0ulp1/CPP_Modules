@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/01 16:17:55 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:26:40 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,11 @@ int main(int, char**)
 
 	std::cout << "strings[2]: " << strings[2] << std::endl;
 	std::cout << "stringsMirror[2]: " << stringsMirror[2] << std::endl;
-
 	std::cout << "stringsMirror has a size of: " << stringsMirror.size() << std::endl;
+
+	const Array<int> constNumbers(numbers);
+	std::cout << "constNumbers has a size of: " << constNumbers.size() << std::endl;
+	std::cout << "constNumbers[5]: " << constNumbers[5] << std::endl;
 
 	return 0;
 }

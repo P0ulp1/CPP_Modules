@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:36:44 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/01 16:07:57 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:22:29 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ unsigned int	Array<T>::size(void) const
 
 template <typename T>
 T	&Array<T>::operator[](unsigned int idx)
+{
+	if (idx >= _size)
+		throw IndexOutOfBound();
+	else
+		return (_array[idx]);
+}
+
+template <typename T>
+const T	&Array<T>::operator[](unsigned int idx) const
 {
 	if (idx >= _size)
 		throw IndexOutOfBound();
