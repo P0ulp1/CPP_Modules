@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:31 by phautena          #+#    #+#             */
-/*   Updated: 2025/09/11 16:59:05 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:18:09 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,18 @@ class	Array
 		Array(const Array &copy);
 		Array	&operator=(const Array &rhs);
 
+		unsigned int	size(void) const;
+		T				&operator[](unsigned int idx);
+
+		class IndexOutOfBound : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
 	private:
-		T *_array;
+		T				*_array;
+		unsigned int	_size;
 };
 
 # include "array.tpp"
