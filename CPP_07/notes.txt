@@ -1,2 +1,0 @@
-* ex01 --> Change second typename F to function (semi-specialized template)
-* ex02 --> Array of size 0 == Default constructor
