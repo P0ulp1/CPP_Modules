@@ -6,14 +6,14 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:36:44 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/01 17:56:08 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/03 17:10:33 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array.hpp"
 
 template <typename T>
-Array<T>::Array(void) : _size(0), _array(new T[0])
+Array<T>::Array(void) : _size(0), _array(new T[0]())
 {
 	std::cout << "Array default constructor called" << std::endl;
 }
@@ -26,21 +26,15 @@ Array<T>::~Array(void)
 }
 
 template <typename T>
-Array<T>::Array(unsigned int n)
+Array<T>::Array(unsigned int n) : _size(n), _array(new T[_size]())
 {
 	std::cout << "Array parameterized constructor called" << std::endl;
-	_size = n;
-	_array = new T[_size];
-	for (unsigned int i = 0; i < _size; i++)
-		_array[i] = T();
 }
 
 template <typename T>
-Array<T>::Array(const Array &copy)
+Array<T>::Array(const Array &copy) : _size(copy.size), _array(new T[_size]())
 {
 	std::cout << "Array copy constructor called" << std::endl;
-	_size = copy._size;
-	_array = new T[_size];
 	for (unsigned int i = 0; i < _size; i++)
 		_array[i] = copy._array[i];
 }
@@ -52,7 +46,7 @@ Array<T>	&Array<T>::operator=(const Array &rhs)
 	{
 		delete [] _array;
 		_size = rhs._size;
-		_array = new T(_size);
+		_array = new T[_size]()
 		for (unsigned int i = 0; i < _size; i++)
 			_array[i] = rhs._array[i];
 	}

@@ -6,16 +6,15 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/02 15:00:35 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/03 17:08:10 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/iter.hpp"
 
-template <typename T>
-void	printString(const T &c)
+void	printString(const std::string &s)
 {
-	std::cout << "String is: " << c << std::endl;
+	std::cout << "String is: " << s << std::endl;
 }
 
 void	upperFirstLetter(std::string &s)
@@ -68,7 +67,7 @@ int	main(void)
 
 	//const std::string test
 	std::cout << std::endl;
-	const std::string	sarray2[5] = {"alix", "pierre", "erika", "adrien", "seb"};
+	std::string	sarray2[5] = {"alix", "pierre", "erika", "adrien", "seb"};
 
 	iter(sarray2, 5, printString);
 

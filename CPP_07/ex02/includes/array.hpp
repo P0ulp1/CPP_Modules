@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:31 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/01 16:22:24 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/03 17:08:43 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ class	Array
 		};
 
 	private:
-		T				*_array;
 		unsigned int	_size;
+		T				*_array;
 };
 
 # include "array.tpp"
