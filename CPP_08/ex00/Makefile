@@ -6,11 +6,11 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/09/11 16:03:05 by phautena         ###   ########.fr        #
+#    Updated: 2025/10/06 12:56:24 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = array
+NAME = easyfind
 
 SRCS = ./srcs/main.cpp
 OBJS = $(SRCS:.cpp=.o)
