@@ -6,7 +6,7 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/10/06 12:56:24 by phautena         ###   ########.fr        #
+#    Updated: 2025/10/14 15:48:30 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(NAME): $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
 clean:
-	@$(RM)  $(OBJS)
+	@$(RM)  $(OBJS) $(DEPS)
 
 fclean: clean
 	@$(RM) $(NAME)

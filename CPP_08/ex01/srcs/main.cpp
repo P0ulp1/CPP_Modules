@@ -6,15 +6,19 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/06 14:54:02 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:00:39 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/span.hpp"
+#include "../includes/Span.hpp"
 
 int main(int, char**)
 {
 	try {
+
+		Span a2(0);
+		a2.shortestSpan();
+
 
 		std::cout << "------------------------------A TEST------------------------------" << std::endl;
 		Span	a(5); // Will work

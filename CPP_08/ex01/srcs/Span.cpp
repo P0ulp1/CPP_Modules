@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.cpp                                           :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 13:12:59 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/06 14:51:54 by phautena         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:01:35 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/span.hpp"
+#include "../includes/Span.hpp"
 
 Span::Span(void) : _n(0)
 {
@@ -39,6 +39,7 @@ Span	&Span::operator=(const Span &rhs)
 	// std::cout << "Span assignement operator overload called" << std::endl;
 	if (this != &rhs)
 	{
+		_n = rhs._n;
 		for (std::list<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
 			_numbers.push_back(*it);
 	}
