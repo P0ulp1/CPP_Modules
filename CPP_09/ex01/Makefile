@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: p0ulp1 <p0ulp1@student.42.fr>              +#+  +:+       +#+         #
+#    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/11/18 14:04:56 by p0ulp1           ###   ########.fr        #
+#    Updated: 2025/11/19 16:26:25 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = rpn
+NAME = RPN
 
 SRCS = ./srcs/main.cpp ./srcs/RPN.cpp
 OBJS = $(SRCS:.cpp=.o)
