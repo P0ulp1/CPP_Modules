@@ -69,19 +69,15 @@ static int parsing(const std::string &str)
 	while (str[i])
 	{
 		if (i == 0 && !is_digit(str[i])) {
-			std::cout << "1" << std::endl;
 			return (1);
 		}
 		if (i != 0 && is_digit(str[i]) && str[i - 1] != ' ' && str[i + 1] != ' ') {
-			std::cout << "2" << std::endl;
 			return (1);
 		}
 		if (i == str.size() && !is_operator(str[i])) {
-			std::cout << "3" << std::endl;
 			return (1);
 		}
 		if (i != 0 && i != str.size() && is_operator(str[i]) && str[i - 1] != ' ' && str[i + 1] != ' ') {
-			std::cout << "4" << std::endl;
 			return (1);
 		}
 		i++;
@@ -115,15 +111,14 @@ int RPN::calculate(const std::string &str)
 			_data.pop();
 
 			if (c == '-')
-				res = a - b;
+				res = b - a;
 			else if (c == '+')
-				res = a + b;
+				res = b + a;
 			else if (c == '*')
-				res = a * b;
+				res = b * a;
 			else
-				res = a / b;
+				res = b / a;
 
-			_data.pop();
 			_data.push(res);
 		}
 		else
