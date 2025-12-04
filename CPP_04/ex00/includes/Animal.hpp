@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:17:44 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/22 15:16:14 by phautena         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:21:03 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	Animal
 		virtual ~Animal(void);
 		Animal(const Animal &copy);
 		Animal				&operator=(const Animal &rhs);
-		virtual void		makeSound(void) const;
+		virtual void				makeSound(void) const;
 		std::string			getType(void) const;
 };
 

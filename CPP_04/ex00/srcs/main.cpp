@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:30:23 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/22 15:16:46 by phautena         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:19:41 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ int	main(void)
 	j->makeSound();
 	meta->makeSound();
 
-	const WrongAnimal* k = new WrongAnimal();
-	const WrongAnimal* l = new WrongCat();
+	// const WrongAnimal* k = new WrongAnimal();
+	// const WrongAnimal* l = new WrongCat();
 
-	std::cout << k->getType() << " " << std::endl;
-	std::cout << l->getType() << " " << std::endl;
-	k->makeSound();
-	l->makeSound();
+	// std::cout << k->getType() << " " << std::endl;
+	// std::cout << l->getType() << " " << std::endl;
+	// k->makeSound();
+	// l->makeSound();
 
 	delete meta;
 	delete j;
 	delete i;
-	delete k;
-	delete l;
+	// delete k;
+	// delete l;
 
 	return (0);
 }

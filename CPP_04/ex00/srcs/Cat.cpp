@@ -6,13 +6,13 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:53:32 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/22 14:45:05 by phautena         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:06:01 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cat.hpp"
 
-Cat::Cat(void)
+Cat::Cat(void) : Animal()
 {
 	std::cout << "Cat constructor called" << std::endl;
 	_type = "Cat";
@@ -32,7 +32,7 @@ Cat	&Cat::operator=(const Cat &rhs)
 {
 	std::cout << "Cat assignment operator overload called" << std::endl;
 	if (this != &rhs)
-		_type = rhs._type;
+		Animal::operator=(rhs);
 	return (*this);
 }
 

@@ -6,13 +6,13 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:53:34 by phautena          #+#    #+#             */
-/*   Updated: 2025/05/22 14:45:13 by phautena         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:06:28 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(void) : Animal()
 {
 	std::cout << "Dog constructor called" << std::endl;
 	_type = "Dog";
@@ -32,7 +32,7 @@ Dog	&Dog::operator=(const Dog &rhs)
 {
 	std::cout << "Dog assignment operator overload called" << std::endl;
 	if (this != &rhs)
-		_type = rhs._type;
+		Animal::operator=(rhs);
 	return (*this);
 }
 
