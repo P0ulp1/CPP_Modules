@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/14 15:00:39 by phautena         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:18:11 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,13 @@
 int main(int, char**)
 {
 	try {
-
-		Span a2(0);
-		a2.shortestSpan();
-
-
 		std::cout << "------------------------------A TEST------------------------------" << std::endl;
 		Span	a(5); // Will work
-		a.addNumbers(0);
-		a.addNumbers(10);
-		a.addNumbers(20);
-		a.addNumbers(30);
-		a.addNumbers(40);
+		a.addNumbers(6);
+		a.addNumbers(3);
+		a.addNumbers(17);
+		a.addNumbers(9);
+		a.addNumbers(11);
 		std::cout << "Shortest span is: " << a.shortestSpan() << std::endl;
 		std::cout << "Longest span is: " << a.longestSpan() << std::endl;
 
@@ -64,6 +59,7 @@ int main(int, char**)
 
 		d.generateNumbers(range.begin(), range.end());
 
+		std::cout << "Shortest span is: " << d.shortestSpan() << std::endl;
 		std::cout << "Longest span: " << d.longestSpan() << std::endl;
 	}
 	catch (const std::exception &e) {

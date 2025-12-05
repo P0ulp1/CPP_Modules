@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:17:29 by phautena          #+#    #+#             */
-/*   Updated: 2025/07/01 13:45:53 by phautena         ###   ########.fr       */
+/*   Updated: 2025/11/28 18:10:17 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 
 int	main(void)
 {
+	ClapTrap	pierre("Pierre");
 	ScavTrap	bob("Bob");
-	ScavTrap	arnold("Arnold");
+	bob.attack("Pierre");
 
-	bob.takeDamage(50);
-	arnold = bob;
-	arnold.beRepaired(50);
-	arnold.guardGate();
+	// ScavTrap	arnold("Arnold");
+
+	// bob.takeDamage(50);
+	// arnold = bob;
+	// arnold.beRepaired(50);
+	// arnold.guardGate();
 
 	return (0);
 }

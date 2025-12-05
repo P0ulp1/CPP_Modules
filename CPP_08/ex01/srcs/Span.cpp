@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 13:12:59 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/14 15:01:35 by phautena         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:17:30 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		Span::shortestSpan(void)
 			second_lowest = *it;
 	}
 
-	return (second_lowest - lowest);
+	return (second_lowest - lowest - 1);
 }
 
 int		Span::longestSpan(void)
