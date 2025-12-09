@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p0ulp1 <p0ulp1@student.42.fr>              +#+  +:+       +#+        */
+/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 15:05:37 by p0ulp1            #+#    #+#             */
-/*   Updated: 2025/05/28 15:14:26 by p0ulp1           ###   ########.fr       */
+/*   Updated: 2025/12/09 17:09:24 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class	MateriaSource : public IMateriaSource
 		MateriaSource	&operator=(const MateriaSource &rhs);
 		~MateriaSource(void);
 
-		void		learnMateria(AMateria *src);
-		AMateria	*createMateria(std::string const &type);
+		// void		learnMateria(AMateria *src);
+		// AMateria	*createMateria(std::string const &type);
 };
 
 #endif
