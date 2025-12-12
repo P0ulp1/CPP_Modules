@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-	if (argc < 2) {
+	if (argc < 3) {
 		std::cout << "[-] Usage: ./PMergeMe <number sequence (space seperated)>" << std::endl;
 		return (-1);
 	}
@@ -21,74 +21,25 @@ int main(int argc, char **argv)
 	print_vec(main);
 	recursive(main, pend, 1, max_depth);
 
+	std::vector<int> jacob = jacobSeq(11);
+	print_vec(jacob);
+
 	return (0);
 }
 
-void simple_swap(std::vector<int> &main, int pos, int pack_size)
-{
-	int i = 0;
-	int temp;
-	while (i < pack_size)
-	{
-		temp = main[pos];
-		main[pos] = main[pos + pack_size];
-		main[pos + pack_size] = temp;
-		i++;
-	}
-}
+// Quand on arrive au cas ou on peut plus faire de pair on incorpore b1 et les a's dans main,
+// et les b's dans pend. Je construis les a's et les b's en creeant des paquets de la taille "pack_size" en depth - 1
 
-void hard_swap(std::vector<int> &main, int pos, int pack_size)
-{
-	int i = 0;
-	int temp;
-	while (i < pack_size)
-	{
-		temp = main[i];
-		main[i] = main[i + pos];
-		main[i + pos] = temp;
-		i++;
-	}
-}
+// je compare les b's de pend avec les pack de la surface de recherche : b3, se compare a b1, a1, et a2
 
-void	swap(std::vector<int> &main, int idx1, int idx2)
-{
-	int temp;
-	temp = main[idx1];
-	main[idx1] = main[idx2];
-	main[idx2] = temp;
-}
+//Generer une suite de Jacobstahl sans prendre les 0 et 1 du debut (3 5 11)
 
-void permutations(std::vector<int> &main, int depth)
-{
-	if (depth == 1)
-	{
-		for (size_t i = 0; i < main.size(); i += 2)
-		{
-			if (main[i] > main[i + 1])
-				simple_swap(main, i, 1);
-		}
-		return;
-	}
-	size_t pack_size = pow(2, depth - 1);
-	size_t pos = pack_size;
-	//AFFICHER NOMBRES COMPARES A CHAQUE DEPTH
+// Premier chiffre suite J = 3
+// --> On commence par inserer b3 dans le main
+// --> b3 est lie a a3, donc surface de recherche: {b1, a1, a2, a3}
+// --> 4 comparaisons max
+// --> On insere ensuite b2 dans le main
+// -> Comme b1, b2, b3 sont dans le main, on prend le prochain nombre de la suite J (5)
+// --> On reprend donc les insertions en commencent par b5, puis on fera b4
 
-	// while (pos + pack_size - 1 < main.size())
-	// {
-	// 	if (main[pos - 1] > main[pos + pack_size - 1])
-	// 		hard_swap(main, pos, depth);
-	// 	pos *= 2;
-	// }
-}
 
-void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int max_depth)
-{
-	if (depth == max_depth + 1)
-		return ;
-	std::cout << std::endl;
-	addPend(main, pend, max_depth);
-	permutations(main, depth);
-	std::cout << "RECUR/Depth: " << depth << std::endl;
-	print_vec(main);
-	recursive(main, pend, depth + 1, max_depth);
-}
