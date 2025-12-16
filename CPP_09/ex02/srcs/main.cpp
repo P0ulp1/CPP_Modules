@@ -17,12 +17,12 @@ int main(int argc, char **argv)
 	while (argv[++i])
 		main.push_back(atoi(argv[i]));
 
-	std::cout << "RECUR/Depth: 0" << std::endl;
-	print_vec(main);
+	// std::cout << "RECUR/Depth: 0" << std::endl;
+	// print_vec(main);
 	recursive(main, pend, 1, max_depth);
 
-	std::vector<int> jacob = jacobSeq(11);
-	print_vec(jacob);
+	// std::vector<int> jacob = jacobSeq(11);
+	// print_vec(jacob);
 
 	return (0);
 }

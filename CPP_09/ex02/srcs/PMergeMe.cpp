@@ -126,21 +126,75 @@ void permutations(std::vector<int> &main, int depth)
 	}
 }
 
-void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int max_depth)
+void insertion(std::vector<int> &main, std::vector<int> &pend, int depth)
 {
-	if (depth == max_depth + 1)
+	//Push everything in main
+	for (size_t i = 0; i < pend.size(); i++)
+		main.push_back(pend[i]);
+	while (!pend.empty())
+		pend.pop_back();
+
+	//Count elements
+	int pack_size = pow(2, depth - 1);
+	int n_elem = main.size() / pack_size;
+
+	if (n_elem < 3)
+		return; //Only 2 elements, a1 and b1
+	
+	//Push some elems to pend
+	size_t i = 0;
+	for (int elem = 0; elem < n_elem; elem++)
 	{
-		std::cout << "Going out of recursion" << std::endl;
-		return ;
+		if (elem == 0 || elem == 1)
+			i += pack_size;
+		else if (elem % 2 == 0)
+		{
+			//Push to pend
+			for (int j = 0; j < pack_size; j++)
+			{
+				pend.push_back(main[i]);
+				//Find main[j]
+				std::vector<int>::iterator it = main.begin();
+				while (it++ != main.end())
+				{
+					if (*it == main[i])
+						break;
+				}
+				main.erase(it);
+			}
+			i += pack_size;
+		}
+		//leave to main
 	}
-	std::cout << std::endl;
-	addPend(main, pend, depth);
-	permutations(main, depth);
+
+
+
 	std::cout << "RECUR/Depth: " << depth << std::endl;
 	print_vec(main);
 	std::cout << "Pend: " << std::endl;
 	print_vec(pend);
-	recursive(main, pend, depth + 1, max_depth);
+
+}
+
+void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int max_depth)
+{
+	if (depth != max_depth + 1)
+	{
+		addPend(main, pend, depth);
+		permutations(main, depth);
+		// std::cout << "RECUR/Depth: " << depth << std::endl;
+		// print_vec(main);
+		// std::cout << "Pend: " << std::endl;
+		// print_vec(pend);
+		recursive(main, pend, depth + 1, max_depth);
+	}
+	// std::cout << "RECUR/Depth: " << depth << std::endl;
+	// print_vec(main);
+	// std::cout << "Pend: " << std::endl;
+	// print_vec(pend);
+	// std::cout << "Going out of recursion" << std::endl;
+	insertion(main, pend, depth);
+	return ;
 }
 
 // Genere les elements de la suite de jacobsthal inferieurs a N

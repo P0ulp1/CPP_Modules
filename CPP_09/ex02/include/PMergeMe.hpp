@@ -18,6 +18,7 @@ void push_front(std::vector<int> &vec, int elem);
 void addPend(std::vector<int> &list, std::vector<int> &pend, int depth);
 void print_vec(std::vector<int> vec);
 void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int max_depth);
+void insertion(std::vector<int> &main, std::vector<int> &pend, int depth);
 void swap(std::vector<int> &main, int pos, int pack_size);
 std::vector<int> jacobSeq(int N);
 
