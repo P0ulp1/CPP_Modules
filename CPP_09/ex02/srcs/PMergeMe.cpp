@@ -34,10 +34,45 @@ int rec_how_many(int &count, int n)
 int how_many(int n)
 {
 	if (n % 2 != 0)
-		n--;
+	n--;
 	int count = 0;
 	rec_how_many(count, n);
 	return (count);
+}
+
+// Genere les elements de la suite de jacobsthal inferieurs a N
+//  N = pend.size() + 1
+std::vector<int> jacobSeq(int N)
+{
+	std::vector<int> sequence;
+	for (int i = 0; i < N; ++i)
+	{
+		// Calcul de 2^i
+		long power = 1L << i; // plus rapide que pow(2, i)
+		// Calcul de (-1)^i
+		int sign = (i % 2 == 0) ? 1 : -1;
+		// Formule : (2^i - (-1)^i) / 3
+		int value = static_cast<int>((power - sign) / 3);
+		if (value >= N) break;
+		sequence.push_back(value);
+	}
+	return (sequence);
+}
+
+elem::elem(char letter, int label, std::vector<int> value) : _letter(letter), _label(label), _value(value)
+{
+}
+
+elem::~elem()
+{
+}
+
+std::ostream    &operator<<(std::ostream &os, elem &rhs)
+{
+	for (size_t i = 0; i < rhs.getValue().size(); i++)
+		os << rhs.getValue()[i] << " ";
+	os << "/" << rhs.getLetter() << rhs.getLabel();
+	return (os);
 }
 
 void print_vec(std::vector<int> vec)
@@ -62,8 +97,6 @@ void addPend(std::vector<int> &main, std::vector<int> &pend, int depth)
 	{
 		if (main.size() % 2 == 0)
 			return;
-		// main.pop_back();
-		// pend.push_back(main[main.size() - 1]);
 		push_front(pend, main[main.size() - 1]);
 		main.pop_back();
 	}
@@ -73,8 +106,6 @@ void addPend(std::vector<int> &main, std::vector<int> &pend, int depth)
 		size_t i = main.size() - 1;
 		while (n_pend)
 		{
-			// pend.push_back(main[i]);
-			// main.pop_back();
 			push_front(pend, main[i]);
 			main.pop_back();
 			n_pend--;
@@ -126,55 +157,6 @@ void permutations(std::vector<int> &main, int depth)
 	}
 }
 
-void insertion(std::vector<int> &main, std::vector<int> &pend, int depth)
-{
-	//Push everything in main
-	for (size_t i = 0; i < pend.size(); i++)
-		main.push_back(pend[i]);
-	while (!pend.empty())
-		pend.pop_back();
-
-	//Count elements
-	int pack_size = pow(2, depth - 1);
-	int n_elem = main.size() / pack_size;
-
-	if (n_elem < 3)
-		return; //Only 2 elements, a1 and b1
-	
-	//Push some elems to pend
-	size_t i = 0;
-	for (int elem = 0; elem < n_elem; elem++)
-	{
-		if (elem == 0 || elem == 1)
-			i += pack_size;
-		else if (elem % 2 == 0)
-		{
-			//Push to pend
-			for (int j = 0; j < pack_size; j++)
-			{
-				pend.push_back(main[i]);
-				//Find main[j]
-				std::vector<int>::iterator it = main.begin();
-				while (it++ != main.end())
-				{
-					if (*it == main[i])
-						break;
-				}
-				main.erase(it);
-			}
-			i += pack_size;
-		}
-		//leave to main
-	}
-
-
-
-	std::cout << "RECUR/Depth: " << depth << std::endl;
-	print_vec(main);
-	std::cout << "Pend: " << std::endl;
-	print_vec(pend);
-
-}
 
 void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int max_depth)
 {
@@ -182,39 +164,172 @@ void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int ma
 	{
 		addPend(main, pend, depth);
 		permutations(main, depth);
-		// std::cout << "RECUR/Depth: " << depth << std::endl;
-		// print_vec(main);
-		// std::cout << "Pend: " << std::endl;
-		// print_vec(pend);
 		recursive(main, pend, depth + 1, max_depth);
 	}
-	// std::cout << "RECUR/Depth: " << depth << std::endl;
-	// print_vec(main);
-	// std::cout << "Pend: " << std::endl;
-	// print_vec(pend);
-	// std::cout << "Going out of recursion" << std::endl;
-	insertion(main, pend, depth);
+	push_everything_to_main(main, pend);
+	insertion2(main, depth);
+	//Insertion is here
+	//Push elems into main and pend + labelize them
 	return ;
 }
 
-// Genere les elements de la suite de jacobsthal inferieurs a N
-//  N = pend.size() + 1
-std::vector<int> jacobSeq(int N)
+void push_everything_to_main(std::vector<int> &main, std::vector<int> &pend)
 {
-	std::vector<int> sequence;
-	for (int i = 0; i < N; ++i)
-	{
-		// Calcul de 2^i
-		long power = 1L << i; // plus rapide que pow(2, i)
-		// Calcul de (-1)^i
-		int sign = (i % 2 == 0) ? 1 : -1;
-		// Formule : (2^i - (-1)^i) / 3
-		int value = static_cast<int>((power - sign) / 3);
-		if (value >= N) break;
-		sequence.push_back(value);
-	}
-	return (sequence);
+	for (size_t i = 0; i < pend.size(); i++)
+		main.push_back(pend[i]);
+	while (!pend.empty())
+		pend.pop_back();
 }
 
-// Insert pend into main using binary-insertion
-// Insertion order is dictated by the jacobsthal sequence
+void insertion(std::vector<int> main, int depth)
+{
+	//Push elements to main and pend
+	std::vector<elem> main2;
+	std::vector<elem> pend2;
+
+	int pack_size = pow(2, depth - 1);
+	int n_elem = main.size() / pack_size;
+
+	if (n_elem < 3)
+		return ; //Only 2 elements, a1 and b1 (which should already be sorted)
+
+	size_t i = 0;
+	for (int elems = 0; elems < n_elem; elems++)
+	{
+		if (elems == 0 || elems == 1)
+			push_to(main, main2, i, pack_size, elems);
+		else
+		{
+			if (elems % 2 == 0)
+				push_to(main, pend2, i, pack_size, elems);
+			else
+				push_to(main, main2, i, pack_size, elems);
+		}
+		i += pack_size;
+	}
+
+	std::cout << std::endl << "MAIN/Depth: " << depth << std::endl;
+	for (size_t i = 0; i < main2.size(); i++)
+		std::cout << main2[i] << std::endl;
+
+	std::cout << std::endl << "PEND/Depth: " << depth << std::endl;
+	for (size_t i = 0; i < main2.size(); i++)
+		std::cout << pend2[i] << std::endl;
+
+}
+
+void push_to(std::vector<int> &main, std::vector<elem> &dest, int idx, int pack_size, int elems)
+{
+	std::vector<int> temp;
+	for (int i = 0; i < pack_size; i++)
+	{
+		temp.push_back(main[idx]);
+		idx++;
+	}
+
+	if (elems == 0)
+	{
+		elem	e('b', 1, temp);
+		dest.push_back(e);
+	}
+	else if (elems == 1)
+	{
+		elem	e('a', 1, temp);
+		dest.push_back(e);
+	}
+	else
+	{
+		if (elems % 2 == 0) //Push to pend (b)
+		{
+			elem	e('b', elems - 1, temp);
+			dest.push_back(e);
+		}
+		else //Push to main (a)
+		{
+			elem	e('a', elems - 1, temp);
+			dest.push_back(e);
+		}
+	}
+}
+
+std::vector<elem> insert_main(std::vector<int> main, int pack_size, int n_elems)
+{
+	std::vector<elem> result;
+
+	size_t idx = 0;
+	for (int elems = 0; elems < (n_elems / 2) + 1; elems++)
+	{
+		std::vector<int> temp;
+		for (int i = 0; i < pack_size; i++)
+		{
+			temp.push_back(main[idx]);
+			idx++;
+		}
+
+		if (elems == 0)
+		{
+			elem	e('b', 1, temp);
+			result.push_back(e);
+		}
+		else if (elems == 1)
+		{
+			elem	e('a', 1, temp);
+			result.push_back(e);
+		}
+		else if (elems % 2 == 0) // Push to main
+		{
+			elem	e('a', elems, temp);
+			result.push_back(e);
+		}
+
+		if (elems != 0)
+			idx += pack_size;
+	}
+	return (result);
+}
+
+std::vector<elem> insert_pend(std::vector<int> main, int pack_size, int n_elems)
+{
+	std::vector<elem> result;
+
+	size_t idx = 0;
+	idx += pack_size * 2;
+
+	for (int elems = 0; elems < n_elems / 2; elems++)
+	{
+		std::vector<int> temp;
+		for (int i = 0; i < pack_size; i++)
+		{
+			temp.push_back(main[idx]);
+			idx++;
+		}
+
+		elem	e('b', elems + 2, temp);
+		result.push_back(e);
+
+		idx += pack_size;
+	}
+	return (result);
+}
+
+void insertion2(std::vector<int> main, int depth)
+{
+	int pack_size = pow(2, depth - 1);
+	int n_elem = main.size() / pack_size;
+
+	if (n_elem < 3)
+		return ; //Only 2 elements, a1 and b1 (which should already be sorted)
+
+	std::vector<elem> main2 = insert_main(main, pack_size, n_elem);
+	std::vector<elem> pend2 = insert_pend(main, pack_size, n_elem);
+
+	std::cout << std::endl << "MAIN/Depth: " << depth << std::endl;
+	for (size_t i = 0; i < main2.size(); i++)
+		std::cout << main2[i] << std::endl;
+
+	std::cout << std::endl << "PEND/Depth: " << depth << std::endl;
+	for (size_t i = 0; i < pend2.size(); i++)
+		std::cout << pend2[i] << std::endl;
+
+	// std::vector<elem> pend2;
+}
