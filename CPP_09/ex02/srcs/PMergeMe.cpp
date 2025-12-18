@@ -167,7 +167,7 @@ void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int ma
 		recursive(main, pend, depth + 1, max_depth);
 	}
 	push_everything_to_main(main, pend);
-	insertion2(main, depth);
+	insertion(main, depth);
 	//Insertion is here
 	//Push elems into main and pend + labelize them
 	return ;
@@ -181,75 +181,10 @@ void push_everything_to_main(std::vector<int> &main, std::vector<int> &pend)
 		pend.pop_back();
 }
 
-void insertion(std::vector<int> main, int depth)
+void clear_main(std::vector<int> &main)
 {
-	//Push elements to main and pend
-	std::vector<elem> main2;
-	std::vector<elem> pend2;
-
-	int pack_size = pow(2, depth - 1);
-	int n_elem = main.size() / pack_size;
-
-	if (n_elem < 3)
-		return ; //Only 2 elements, a1 and b1 (which should already be sorted)
-
-	size_t i = 0;
-	for (int elems = 0; elems < n_elem; elems++)
-	{
-		if (elems == 0 || elems == 1)
-			push_to(main, main2, i, pack_size, elems);
-		else
-		{
-			if (elems % 2 == 0)
-				push_to(main, pend2, i, pack_size, elems);
-			else
-				push_to(main, main2, i, pack_size, elems);
-		}
-		i += pack_size;
-	}
-
-	std::cout << std::endl << "MAIN/Depth: " << depth << std::endl;
-	for (size_t i = 0; i < main2.size(); i++)
-		std::cout << main2[i] << std::endl;
-
-	std::cout << std::endl << "PEND/Depth: " << depth << std::endl;
-	for (size_t i = 0; i < main2.size(); i++)
-		std::cout << pend2[i] << std::endl;
-
-}
-
-void push_to(std::vector<int> &main, std::vector<elem> &dest, int idx, int pack_size, int elems)
-{
-	std::vector<int> temp;
-	for (int i = 0; i < pack_size; i++)
-	{
-		temp.push_back(main[idx]);
-		idx++;
-	}
-
-	if (elems == 0)
-	{
-		elem	e('b', 1, temp);
-		dest.push_back(e);
-	}
-	else if (elems == 1)
-	{
-		elem	e('a', 1, temp);
-		dest.push_back(e);
-	}
-	else
-	{
-		if (elems % 2 == 0) //Push to pend (b)
-		{
-			elem	e('b', elems - 1, temp);
-			dest.push_back(e);
-		}
-		else //Push to main (a)
-		{
-			elem	e('a', elems - 1, temp);
-			dest.push_back(e);
-		}
-	}
+	while(!main.empty())
+		main.pop_back();
 }
 
 std::vector<elem> insert_main(std::vector<int> main, int pack_size, int n_elems)
@@ -295,24 +230,77 @@ std::vector<elem> insert_pend(std::vector<int> main, int pack_size, int n_elems)
 	size_t idx = 0;
 	idx += pack_size * 2;
 
-	for (int elems = 0; elems < n_elems / 2; elems++)
+	std::cout << "N_ELEMS: " << n_elems << std::endl;
+
+	if (n_elems % 2 != 0)
 	{
-		std::vector<int> temp;
-		for (int i = 0; i < pack_size; i++)
+		for (int elems = 0; elems < n_elems / 2; elems++)
 		{
-			temp.push_back(main[idx]);
-			idx++;
+			std::vector<int> temp;
+			for (int i = 0; i < pack_size; i++)
+			{
+				temp.push_back(main[idx]);
+				idx++;
+			}
+	
+			elem	e('b', elems + 2, temp);
+			result.push_back(e);
+	
+			idx += pack_size;
 		}
-
-		elem	e('b', elems + 2, temp);
-		result.push_back(e);
-
-		idx += pack_size;
 	}
+	else
+	{
+		for (int elems = 0; elems < (n_elems / 2) - 1; elems++)
+		{
+			std::vector<int> temp;
+			for (int i = 0; i < pack_size; i++)
+			{
+				temp.push_back(main[idx]);
+				idx++;
+			}
+	
+			elem	e('b', elems + 2, temp);
+			result.push_back(e);
+	
+			idx += pack_size;
+		}
+	}
+
 	return (result);
 }
 
-void insertion2(std::vector<int> main, int depth)
+std::vector<int> calculate_insertion_order(std::vector<int> jacob)
+{
+	std::vector<int> result;
+
+	for (size_t i = 3; i < jacob.size(); i++)
+		result.push_back(jacob[i] - jacob[i - 1] + 1);
+	
+	return (result);
+}
+
+// void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob_comp)
+// {
+// 	size_t elems = pend.size();
+// 	std::vector<int>::iterator ij = jacob_comp.begin();
+
+// 	while (elems != 0)
+// 	{
+// 		std::vector<elem>::iterator ip = pend.begin();
+// 		while ((*ip).g)
+// 	}
+
+
+
+
+
+// 	(void)main;
+// 	(void)pend;
+// 	(void)jacob_comp;
+// }
+
+void insertion(std::vector<int> &main, int depth)
 {
 	int pack_size = pow(2, depth - 1);
 	int n_elem = main.size() / pack_size;
@@ -322,6 +310,8 @@ void insertion2(std::vector<int> main, int depth)
 
 	std::vector<elem> main2 = insert_main(main, pack_size, n_elem);
 	std::vector<elem> pend2 = insert_pend(main, pack_size, n_elem);
+	
+	clear_main(main);
 
 	std::cout << std::endl << "MAIN/Depth: " << depth << std::endl;
 	for (size_t i = 0; i < main2.size(); i++)
@@ -331,5 +321,13 @@ void insertion2(std::vector<int> main, int depth)
 	for (size_t i = 0; i < pend2.size(); i++)
 		std::cout << pend2[i] << std::endl;
 
-	// std::vector<elem> pend2;
+	std::vector<int> jacob = jacobSeq(10000);
+	std::vector<int> jacob_comp = calculate_insertion_order(jacob);
+
+	std::cout << std::endl << "JACOB: " << std::endl;
+	for (size_t i = 0; i < jacob_comp.size(); i++)
+		std::cout << jacob_comp[i] << std::endl;
+
+	//Begin Insertion
+
 }
