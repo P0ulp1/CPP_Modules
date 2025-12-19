@@ -168,8 +168,6 @@ void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int ma
 	}
 	push_everything_to_main(main, pend);
 	insertion(main, depth);
-	//Insertion is here
-	//Push elems into main and pend + labelize them
 	return ;
 }
 
@@ -242,10 +240,10 @@ std::vector<elem> insert_pend(std::vector<int> main, int pack_size, int n_elems)
 				temp.push_back(main[idx]);
 				idx++;
 			}
-	
+
 			elem	e('b', elems + 2, temp);
 			result.push_back(e);
-	
+
 			idx += pack_size;
 		}
 	}
@@ -259,10 +257,10 @@ std::vector<elem> insert_pend(std::vector<int> main, int pack_size, int n_elems)
 				temp.push_back(main[idx]);
 				idx++;
 			}
-	
+
 			elem	e('b', elems + 2, temp);
 			result.push_back(e);
-	
+
 			idx += pack_size;
 		}
 	}
@@ -276,29 +274,65 @@ std::vector<int> calculate_insertion_order(std::vector<int> jacob)
 
 	for (size_t i = 3; i < jacob.size(); i++)
 		result.push_back(jacob[i] - jacob[i - 1] + 1);
-	
+
 	return (result);
 }
 
-// void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob_comp)
-// {
-// 	size_t elems = pend.size();
-// 	std::vector<int>::iterator ij = jacob_comp.begin();
+void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob_comp, int pack_size)
+{
+	size_t elems = pend.size();
+	std::cout << "At init: " << elems << " elements in pend" << std::endl;
+	std::vector<int>::iterator jacob_index = jacob_comp.begin();
 
-// 	while (elems != 0)
-// 	{
-// 		std::vector<elem>::iterator ip = pend.begin();
-// 		while ((*ip).g)
-// 	}
+	while (elems != 0)
+	{
+		std::cout << "Still " << elems << " elements to push" << std::endl;
+		std::cout << "Jacobstahl index is: " << *jacob_index << std::endl;
 
+		//Getting the element to push (corresponding to the Jacobstahl suite)
+		std::vector<elem>::iterator to_push = pend.begin();
+		while (to_push != pend.end() && (*to_push).getLabel() != *jacob_index)
+			to_push++;
+		std::cout << "The elem to push is: " << *to_push << std::endl;
 
+		//Getting the search area
+		std::vector<elem>::iterator area_start = main.begin();
+		std::vector<elem>::iterator area_end = main.begin();
+		while (true)
+		{
+			if ((*area_end).getLabel() == (*to_push).getLabel())
+				break;
+			else if (area_end + 1 == main.end())
+				break;
+			area_end++;
+		}
+		std::cout << "The search area is: " << *area_start << " ==> " << *area_end << std::endl;
 
+		//Actually makes the comparisons
+		while (area_start != main.end())
+		{
+			std::cout << "Comparing: " << *to_push << " With: " << *area_start << std::endl;
+			if ((*to_push).getValue()[pack_size - 1] < (*area_start).getValue()[pack_size - 1])
+			{
+				std::cout << "Inserting" << std::endl;
+				main.insert(area_start, *to_push);
+				pend.erase(to_push);
+				break;
+			}
+			area_start++;
+		}
 
+		if (*jacob_index == 0)
+			jacob_index++;
+		else
+			(*jacob_index)--;
+		elems--;
 
-// 	(void)main;
-// 	(void)pend;
-// 	(void)jacob_comp;
-// }
+		std::cout << std::endl << "MAIN after insertion:" << std::endl;
+		for (size_t i = 0; i < main.size(); i++)
+			std::cout << main[i] << std::endl;
+	}
+}
 
 void insertion(std::vector<int> &main, int depth)
 {
@@ -310,7 +344,7 @@ void insertion(std::vector<int> &main, int depth)
 
 	std::vector<elem> main2 = insert_main(main, pack_size, n_elem);
 	std::vector<elem> pend2 = insert_pend(main, pack_size, n_elem);
-	
+
 	clear_main(main);
 
 	std::cout << std::endl << "MAIN/Depth: " << depth << std::endl;
@@ -324,10 +358,24 @@ void insertion(std::vector<int> &main, int depth)
 	std::vector<int> jacob = jacobSeq(10000);
 	std::vector<int> jacob_comp = calculate_insertion_order(jacob);
 
-	std::cout << std::endl << "JACOB: " << std::endl;
-	for (size_t i = 0; i < jacob_comp.size(); i++)
-		std::cout << jacob_comp[i] << std::endl;
-
 	//Begin Insertion
+	begin_insertion(main2, pend2, jacob_comp, pack_size);
 
+	//Now put back everything into main <int> vector to allow recursion to continue
+	reinit_main(main, main2, pack_size);
+
+}
+
+void reinit_main(std::vector<int> &main, std::vector<elem> main2, int pack_size)
+{
+	for (size_t i = 0; i < main2.size(); i++)
+	{
+		for (int j = 0; j < pack_size; j++)
+			main.push_back(main2[i].getValue()[j]);
+	}
+
+	std::cout << std::endl << "MAIN" << std::endl;
+	for (size_t i = 0; i < main.size(); i++)
+		std::cout << main[i] << " ";
+	std::cout << std::endl;
 }

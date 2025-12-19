@@ -39,6 +39,8 @@ void clear_main(std::vector<int> &main);
 std::vector<elem> insert_main(std::vector<int> main, int pack_size, int n_elems);
 std::vector<elem> insert_pend(std::vector<int> main, int pack_size, int n_elems);
 std::vector<int> jacobSeq(int N);
+void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob_comp, int pack_size);
+void reinit_main(std::vector<int> &main, std::vector<elem> main2, int pack_size);
 
 std::ostream    &operator<<(std::ostream &os, elem &rhs);
 
