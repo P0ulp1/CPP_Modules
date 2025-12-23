@@ -157,7 +157,6 @@ void permutations(std::vector<int> &main, int depth)
 	}
 }
 
-
 void recursive(std::vector<int> &main, std::vector<int> &pend, int depth, int max_depth)
 {
 	if (depth != max_depth + 1)
@@ -185,7 +184,7 @@ void clear_main(std::vector<int> &main)
 		main.pop_back();
 }
 
-std::vector<elem> insert_main(std::vector<int> main, int pack_size, int n_elems)
+std::vector<elem> insert_main(std::vector<int> &main, int pack_size, int n_elems)
 {
 	std::vector<elem> result;
 
@@ -208,20 +207,19 @@ std::vector<elem> insert_main(std::vector<int> main, int pack_size, int n_elems)
 		{
 			elem	e('a', 1, temp);
 			result.push_back(e);
+			idx += pack_size;
 		}
-		else if (elems % 2 == 0) // Push to main
+		else
 		{
 			elem	e('a', elems, temp);
 			result.push_back(e);
-		}
-
-		if (elems != 0)
 			idx += pack_size;
+		}
 	}
 	return (result);
 }
 
-std::vector<elem> insert_pend(std::vector<int> main, int pack_size, int n_elems)
+std::vector<elem> insert_pend(std::vector<int> &main, int pack_size, int n_elems)
 {
 	std::vector<elem> result;
 
@@ -266,6 +264,23 @@ std::vector<elem> insert_pend(std::vector<int> main, int pack_size, int n_elems)
 	}
 
 	return (result);
+}
+
+std::vector<int> get_rest(std::vector<int> &main, int pack_size, int n_elems)
+{
+	std::vector<int> rest;
+	std::vector<int>::iterator it = main.begin();
+
+	for (int i = 0; i < n_elems; i++)
+		it += pack_size;
+
+	while (it != main.end())
+	{
+		rest.push_back(*it);
+		it++;
+	}
+
+	return (rest);
 }
 
 std::vector<int> calculate_insertion_order(std::vector<int> jacob)
@@ -322,10 +337,9 @@ void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vect
 			area_start++;
 		}
 
+		(*jacob_index)--;
 		if (*jacob_index == 0)
 			jacob_index++;
-		else
-			(*jacob_index)--;
 		elems--;
 
 		std::cout << std::endl << "MAIN after insertion:" << std::endl;
@@ -344,6 +358,7 @@ void insertion(std::vector<int> &main, int depth)
 
 	std::vector<elem> main2 = insert_main(main, pack_size, n_elem);
 	std::vector<elem> pend2 = insert_pend(main, pack_size, n_elem);
+	std::vector<int> rest = get_rest(main, pack_size, n_elem);
 
 	clear_main(main);
 
@@ -355,6 +370,12 @@ void insertion(std::vector<int> &main, int depth)
 	for (size_t i = 0; i < pend2.size(); i++)
 		std::cout << pend2[i] << std::endl;
 
+	std::cout << std::endl << "REST/Depth: " << depth << std::endl;
+	for (size_t i = 0; i < rest.size(); i++)
+		std::cout << rest[i] << std::endl;
+
+	std::cout << std::endl;
+
 	std::vector<int> jacob = jacobSeq(10000);
 	std::vector<int> jacob_comp = calculate_insertion_order(jacob);
 
@@ -362,17 +383,20 @@ void insertion(std::vector<int> &main, int depth)
 	begin_insertion(main2, pend2, jacob_comp, pack_size);
 
 	//Now put back everything into main <int> vector to allow recursion to continue
-	reinit_main(main, main2, pack_size);
+	reinit_main(main, main2, rest, pack_size);
 
 }
 
-void reinit_main(std::vector<int> &main, std::vector<elem> main2, int pack_size)
+void reinit_main(std::vector<int> &main, std::vector<elem> main2, std::vector<int> rest, int pack_size)
 {
 	for (size_t i = 0; i < main2.size(); i++)
 	{
 		for (int j = 0; j < pack_size; j++)
 			main.push_back(main2[i].getValue()[j]);
 	}
+
+	for (size_t i = 0; i < rest.size(); i++)
+		main.push_back(rest[i]);
 
 	std::cout << std::endl << "MAIN" << std::endl;
 	for (size_t i = 0; i < main.size(); i++)

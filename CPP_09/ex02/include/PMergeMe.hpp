@@ -36,11 +36,12 @@ void swap(std::vector<int> &main, int pos, int pack_size);
 void push_everything_to_main(std::vector<int> &main, std::vector<int> &pend);
 void insertion(std::vector<int> &main, int depth);
 void clear_main(std::vector<int> &main);
-std::vector<elem> insert_main(std::vector<int> main, int pack_size, int n_elems);
-std::vector<elem> insert_pend(std::vector<int> main, int pack_size, int n_elems);
+std::vector<elem> insert_main(std::vector<int> &main, int pack_size, int n_elems);
+std::vector<elem> insert_pend(std::vector<int> &main, int pack_size, int n_elems);
 std::vector<int> jacobSeq(int N);
 void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob_comp, int pack_size);
-void reinit_main(std::vector<int> &main, std::vector<elem> main2, int pack_size);
+void reinit_main(std::vector<int> &main, std::vector<elem> main2, std::vector<int> rest, int pack_size);
+std::vector<int> get_rest(std::vector<int> &main, int pack_size, int n_elems);
 
 std::ostream    &operator<<(std::ostream &os, elem &rhs);
 
