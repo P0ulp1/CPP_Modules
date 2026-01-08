@@ -1,4 +1,4 @@
-#include "../include/PMergeMe.hpp"
+#include "../include/PMergeMeVector.hpp"
 
 int parsing(char **argv)
 {
@@ -54,7 +54,8 @@ std::vector<int> jacobSeq(int N)
 		// Formule : (2^i - (-1)^i) / 3
 		int value = static_cast<int>((power - sign) / 3);
 		if (value >= N) break;
-		sequence.push_back(value);
+		if (i != 0 && i != 1)
+			sequence.push_back(value);
 	}
 	return (sequence);
 }
@@ -226,7 +227,7 @@ std::vector<elem> insert_pend(std::vector<int> &main, int pack_size, int n_elems
 	size_t idx = 0;
 	idx += pack_size * 2;
 
-	std::cout << "N_ELEMS: " << n_elems << std::endl;
+	// std::cout << "N_ELEMS: " << n_elems << std::endl;
 
 	if (n_elems % 2 != 0)
 	{
@@ -293,22 +294,27 @@ std::vector<int> calculate_insertion_order(std::vector<int> jacob)
 	return (result);
 }
 
-void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob_comp, int pack_size)
+void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob, int pack_size)
 {
 	size_t elems = pend.size();
-	std::cout << "At init: " << elems << " elements in pend" << std::endl;
-	std::vector<int>::iterator jacob_index = jacob_comp.begin();
+	// std::cout << "At init: " << elems << " elements in pend" << std::endl;
+	std::vector<int> real_jacob(jacob);
+	std::vector<int>::iterator jacob_index = jacob.begin();
+	std::vector<int>::iterator jacob_prev = real_jacob.begin();
+	jacob_index++;
 
 	while (elems != 0)
 	{
-		std::cout << "Still " << elems << " elements to push" << std::endl;
-		std::cout << "Jacobstahl index is: " << *jacob_index << std::endl;
+		// std::cout << "Still " << elems << " elements to push" << std::endl;
+		// std::cout << "Jacobstahl index is: " << *jacob_index << std::endl;
 
-		//Getting the element to push (corresponding to the Jacobstahl suite)
+		//Getting the element to push (corresponding to the Jacobstahl suite) --> Needs more work
 		std::vector<elem>::iterator to_push = pend.begin();
 		while (to_push != pend.end() && (*to_push).getLabel() != *jacob_index)
 			to_push++;
-		std::cout << "The elem to push is: " << *to_push << std::endl;
+		if (to_push == pend.end())
+			to_push--;
+		// std::cout << "The elem to push is: " << *to_push << std::endl;
 
 		//Getting the search area
 		std::vector<elem>::iterator area_start = main.begin();
@@ -321,15 +327,15 @@ void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vect
 				break;
 			area_end++;
 		}
-		std::cout << "The search area is: " << *area_start << " ==> " << *area_end << std::endl;
+		// std::cout << "The search area is: " << *area_start << " ==> " << *area_end << std::endl;
 
 		//Actually makes the comparisons
 		while (area_start != main.end())
 		{
-			std::cout << "Comparing: " << *to_push << " With: " << *area_start << std::endl;
+			// std::cout << "Comparing: " << *to_push << " With: " << *area_start << std::endl;
 			if ((*to_push).getValue()[pack_size - 1] < (*area_start).getValue()[pack_size - 1])
 			{
-				std::cout << "Inserting" << std::endl;
+				// std::cout << "Inserting" << std::endl;
 				main.insert(area_start, *to_push);
 				pend.erase(to_push);
 				break;
@@ -338,13 +344,16 @@ void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vect
 		}
 
 		(*jacob_index)--;
-		if (*jacob_index == 0)
+		if (*jacob_index == *jacob_prev)
+		{
 			jacob_index++;
+			jacob_prev++;
+		}
 		elems--;
 
-		std::cout << std::endl << "MAIN after insertion:" << std::endl;
-		for (size_t i = 0; i < main.size(); i++)
-			std::cout << main[i] << std::endl;
+		// std::cout << std::endl << "MAIN after insertion:" << std::endl;
+		// for (size_t i = 0; i < main.size(); i++)
+		// 	std::cout << main[i] << std::endl;
 	}
 }
 
@@ -362,25 +371,27 @@ void insertion(std::vector<int> &main, int depth)
 
 	clear_main(main);
 
-	std::cout << std::endl << "MAIN/Depth: " << depth << std::endl;
-	for (size_t i = 0; i < main2.size(); i++)
-		std::cout << main2[i] << std::endl;
+	// std::cout << std::endl << "MAIN/Depth: " << depth << std::endl;
+	// for (size_t i = 0; i < main2.size(); i++)
+	// 	std::cout << main2[i] << std::endl;
 
-	std::cout << std::endl << "PEND/Depth: " << depth << std::endl;
-	for (size_t i = 0; i < pend2.size(); i++)
-		std::cout << pend2[i] << std::endl;
+	// std::cout << std::endl << "PEND/Depth: " << depth << std::endl;
+	// for (size_t i = 0; i < pend2.size(); i++)
+	// 	std::cout << pend2[i] << std::endl;
 
-	std::cout << std::endl << "REST/Depth: " << depth << std::endl;
-	for (size_t i = 0; i < rest.size(); i++)
-		std::cout << rest[i] << std::endl;
-
-	std::cout << std::endl;
+	// std::cout << std::endl << "REST/Depth: " << depth << std::endl;
+	// for (size_t i = 0; i < rest.size(); i++)
+	// std::cout << rest[i] << std::endl;
+	// std::cout << std::endl;
 
 	std::vector<int> jacob = jacobSeq(10000);
-	std::vector<int> jacob_comp = calculate_insertion_order(jacob);
+	// std::vector<int> jacob = calculate_insertion_order(jacob);
+	// std::cout << std::endl << "Jacob: " << std::endl;
+	// for (size_t i = 0; i < jacob.size(); i++)
+	// 	std::cout << jacob[i] << std::endl;
 
 	//Begin Insertion
-	begin_insertion(main2, pend2, jacob_comp, pack_size);
+	begin_insertion(main2, pend2, jacob, pack_size);
 
 	//Now put back everything into main <int> vector to allow recursion to continue
 	reinit_main(main, main2, rest, pack_size);
@@ -398,8 +409,8 @@ void reinit_main(std::vector<int> &main, std::vector<elem> main2, std::vector<in
 	for (size_t i = 0; i < rest.size(); i++)
 		main.push_back(rest[i]);
 
-	std::cout << std::endl << "MAIN" << std::endl;
-	for (size_t i = 0; i < main.size(); i++)
-		std::cout << main[i] << " ";
-	std::cout << std::endl;
+	// std::cout << std::endl << "MAIN" << std::endl;
+	// for (size_t i = 0; i < main.size(); i++)
+		// std::cout << main[i] << " ";
+	// std::cout << std::endl;
 }

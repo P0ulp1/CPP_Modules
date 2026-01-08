@@ -1,4 +1,5 @@
-#include "../include/PMergeMe.hpp"
+#include "../include/PMergeMeVector.hpp"
+#include "../include/PMergeMeDeque.hpp"
 
 int main(int argc, char **argv)
 {
@@ -10,6 +11,9 @@ int main(int argc, char **argv)
 		std::cout << "[-] An error has occured while parsing input. Please check you number sequence." << std::endl;
 	}
 
+	int n_elems = count_elem(argv);
+
+	//Vector way
 	std::vector<int> main;
 	std::vector<int> pend;
 	int max_depth = how_many(count_elem(argv)) + 1;
@@ -17,31 +21,48 @@ int main(int argc, char **argv)
 	while (argv[++i])
 		main.push_back(atoi(argv[i]));
 
-	// std::cout << "RECUR/Depth: 0" << std::endl;
-	// print_vec(main);
+	std::cout << "Before: ";
+	for (size_t i = 0; i < main.size(); i++)
+		std::cout << main[i] << " ";
+	std::cout << std::endl;
+
+	const std::clock_t cv_start = std::clock();
 	recursive(main, pend, 1, max_depth);
+	const std::clock_t cv_end = std::clock();
 
-	// std::vector<int> jacob = jacobSeq(11);
-	// print_vec(jacob);
+	std::cout << "After: ";
+	for (size_t i = 0; i < main.size(); i++)
+		std::cout << main[i] << " ";
+	std::cout << std::endl;
 
-	
+
+	//Deque way
+	std::deque<int> main2;
+	std::deque<int> pend2;
+	int max_depth2 = how_many(count_elem(argv)) + 1;
+	int i2 = 0;
+	while (argv[++i2])
+		main2.push_back(atoi(argv[i2]));
+
+	std::cout << "Before: ";
+	for (size_t i = 0; i < main2.size(); i++)
+		std::cout << main2[i] << " ";
+	std::cout << std::endl;
+
+	const std::clock_t cd_start = std::clock();
+	recursive(main2, pend2, 1, max_depth2);
+	const std::clock_t cd_end = std::clock();
+
+	std::cout << "After: ";
+	for (size_t i = 0; i < main2.size(); i++)
+		std::cout << main2[i] << " ";
+	std::cout << std::endl;
+
+	//Result Time
+	std::cout << "\nTime to process a range of " << n_elems << " with std::vector: "
+	<< std::fixed << std::setprecision(2) << 1000.0 * (cv_end - cv_start) / CLOCKS_PER_SEC << "ms" << std::endl;
+	std::cout << "Time to process a range of " << n_elems << " with std::deque: "
+	<< std::fixed << std::setprecision(2) << 1000.0 * (cd_end - cd_start) / CLOCKS_PER_SEC << "ms" << std::endl;
 
 	return (0);
 }
-
-// Quand on arrive au cas ou on peut plus faire de pair on incorpore b1 et les a's dans main,
-// et les b's dans pend. Je construis les a's et les b's en creeant des paquets de la taille "pack_size" en depth - 1
-
-// je compare les b's de pend avec les pack de la surface de recherche : b3, se compare a b1, a1, et a2
-
-//Generer une suite de Jacobstahl sans prendre les 0 et 1 du debut (3 5 11)
-
-// Premier chiffre suite J = 3
-// --> On commence par inserer b3 dans le main
-// --> b3 est lie a a3, donc surface de recherche: {b1, a1, a2, a3}
-// --> 4 comparaisons max
-// --> On insere ensuite b2 dans le main
-// -> Comme b1, b2, b3 sont dans le main, on prend le prochain nombre de la suite J (5)
-// --> On reprend donc les insertions en commencent par b5, puis on fera b4
-
-

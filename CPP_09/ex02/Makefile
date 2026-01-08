@@ -6,13 +6,13 @@
 #    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 13:15:41 by phautena          #+#    #+#              #
-#    Updated: 2025/12/05 12:50:15 by phautena         ###   ########.fr        #
+#    Updated: 2026/01/08 15:23:47 by phautena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PMergeMe
 
-SRCS = ./srcs/main.cpp ./srcs/PMergeMe.cpp
+SRCS = ./srcs/main.cpp ./srcs/PMergeMeVector.cpp ./srcs/PMergeMeDeque.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(OBJS:.o=.d)
 
@@ -29,6 +29,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@$(RM)  $(OBJS)
+	@$(RM)  $(DEPS)
 
 fclean: clean
 	@$(RM) $(NAME)

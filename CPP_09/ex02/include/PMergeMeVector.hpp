@@ -1,12 +1,14 @@
-#ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#ifndef PMERGEMEVECTOR_HPP
+# define PMERGEMEVECTOR_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <vector>
 # include <deque>
 # include <utility>
 # include <cstdlib>
 # include <cmath>
+# include <ctime>
 
 class elem
 {
@@ -39,7 +41,7 @@ void clear_main(std::vector<int> &main);
 std::vector<elem> insert_main(std::vector<int> &main, int pack_size, int n_elems);
 std::vector<elem> insert_pend(std::vector<int> &main, int pack_size, int n_elems);
 std::vector<int> jacobSeq(int N);
-void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob_comp, int pack_size);
+void begin_insertion(std::vector<elem> &main, std::vector<elem> &pend, std::vector<int> jacob, int pack_size);
 void reinit_main(std::vector<int> &main, std::vector<elem> main2, std::vector<int> rest, int pack_size);
 std::vector<int> get_rest(std::vector<int> &main, int pack_size, int n_elems);
 
