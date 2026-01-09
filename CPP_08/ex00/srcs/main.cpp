@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/14 15:45:57 by phautena         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:40:18 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int main(void)
 {
 	//VALID
 	try {
-		std::list<int>	numbers;
+		std::list<int>		numbers;
+		std::vector<int>	numbers2;
 
 		numbers.push_back(42);
 		numbers.push_back(21);
@@ -24,6 +25,11 @@ int main(void)
 
 		easyfind(numbers, 1);
 		easyfind(numbers, 42);
+
+		numbers2.push_back(54);
+		numbers2.push_back(4);
+
+		easyfind(numbers2, 4);
 	}
 	catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;

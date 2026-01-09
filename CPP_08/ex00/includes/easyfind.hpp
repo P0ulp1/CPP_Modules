@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 12:38:37 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/14 15:45:10 by phautena         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:51:22 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@
 # include <list>
 # include <exception>
 # include <sstream>
+# include <vector>
+# include <algorithm>
 
 
 template <typename T>
 typename T::const_iterator easyfind(const T &container, const int &x)
 {
-	typename T::const_iterator it;
+	typename T::const_iterator it = std::find(container.begin(), container.end(), x);
 
-	for (it = container.begin(); it != container.end(); it++)
+	if (it != container.end())
 	{
-		if (*it == x)
-		{
-			std::cout << "[+] easyfind found the specified occurence (" << x << ")" << std::endl;
-			return (it);
-		}
+		std::cout << "[+] easyfind found occurence: " << *it << std::endl;
+		return (it);
 	}
+
 	std::ostringstream oss;
 	oss << "[-] easyfind couldn't find the specified occurence (" << x << ")";
 	throw std::out_of_range(oss.str());
