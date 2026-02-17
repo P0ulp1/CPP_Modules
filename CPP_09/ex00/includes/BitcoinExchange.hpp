@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:00:48 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/14 14:39:47 by phautena         ###   ########.fr       */
+/*   Updated: 2026/02/17 15:19:48 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class BitcoinExchange
 		std::map<std::string, float> _data;
 
 		int _parseLine(std::string line);
+		int _parseDate(std::string date);
 	public:
 		BitcoinExchange(void);
 		~BitcoinExchange(void);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.hpp                                           :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 12:38:37 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/14 14:55:06 by phautena         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:10:27 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 # define SPAN_HPP
 
 # include <iostream>
-# include <list>
+# include <vector>
 # include <climits>
+# include <algorithm>
+# include <stdlib.h>
 
 class	Span {
 
 	private:
 		unsigned int		_n;
-		std::list<int>		_numbers;
+		std::vector<int>	_numbers;
 
 	public:
 		Span();
@@ -33,7 +35,7 @@ class	Span {
 		void	addNumbers(int n);
 		int		shortestSpan(void);
 		int		longestSpan(void);
-		void	generateNumbers(const std::list<int>::iterator first, const std::list<int>::iterator last);
+		void	generateNumbers(const std::vector<int>::iterator first, const std::vector<int>::iterator last);
 
 		class SpanFull : public std::exception
 		{

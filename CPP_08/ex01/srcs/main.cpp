@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2025/12/04 14:18:11 by phautena         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:13:59 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int main(int, char**)
 		a.addNumbers(6);
 		a.addNumbers(3);
 		a.addNumbers(17);
-		a.addNumbers(9);
-		a.addNumbers(11);
+		a.addNumbers(57);
+		a.addNumbers(89);
 		std::cout << "Shortest span is: " << a.shortestSpan() << std::endl;
 		std::cout << "Longest span is: " << a.longestSpan() << std::endl;
 
@@ -50,7 +50,7 @@ int main(int, char**)
 		std::cout << "\n------------------------------D TEST------------------------------" << std::endl;
 		Span	d(50);
 
-		std::list<int>	range;
+		std::vector<int>	range;
 		range.push_back(10);
 		range.push_back(20);
 		range.push_back(30);
@@ -66,5 +66,22 @@ int main(int, char**)
 		std::cout << "An error occured: " << e.what() << std::endl;
 	}
 
+	try {
+		std::cout << "\n------------------------------E TEST------------------------------" << std::endl;
+		Span	e(100000);
+
+		std::vector<int> t;
+		srand(static_cast<unsigned int>(time(NULL)));
+		for (int i = 0; i < 100; i++)
+			t.push_back(rand() % 56000);
+
+		e.generateNumbers(t.begin(), t.end());
+
+		std::cout << "Shortest span is: " << e.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << e.longestSpan() << std::endl;
+	}
+	catch (const std::exception &e) {
+		std::cout << "An error occured: " << e.what() << std::endl;
+	}
 	return (0);
 }

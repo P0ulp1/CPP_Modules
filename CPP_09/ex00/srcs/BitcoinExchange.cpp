@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:00:46 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/14 14:39:45 by phautena         ###   ########.fr       */
+/*   Updated: 2026/02/17 15:32:01 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,19 @@ int BitcoinExchange::exchange(std::string filename)
 	return (SUCCESS);
 }
 
+int BitcoinExchange::_parseDate(std::string date)
+{
+	int year = atoi(date.substr(0, 4).c_str());
+	int month = atoi(date.substr(5, 2).c_str());
+	int day = atoi(date.substr(8, 2).c_str());
+	if (year < 1 || month <= 0 || month > 12 || day < 1 || day > 31)
+	{
+		std::cout << date << " => Error: date has bad formatting." << std::endl;
+		return (ERROR);
+	}
+	return (SUCCESS);
+}
+
 int BitcoinExchange::_parseLine(std::string line)
 {
 	int i = 0;
@@ -90,6 +103,7 @@ int BitcoinExchange::_parseLine(std::string line)
 		std::cout << "Error: line is empty." << std::endl;
 		return (ERROR);
 	}
+	std::string date = line.substr(0, 13);
 	while (line[i++])
 	{
 		if ((i < 4 || (i > 4 && i < 7) || (i > 7 && i < 9)) && isdigit(line[i]) == false)
@@ -113,6 +127,8 @@ int BitcoinExchange::_parseLine(std::string line)
 			return (ERROR);
 		}
 	}
+	if (_parseDate(date))
+		return (ERROR);
 
 	std::string value = line.substr(13, line.length() - 13);
 	bool point = false;
@@ -123,16 +139,16 @@ int BitcoinExchange::_parseLine(std::string line)
 			std::cout << line << " => Error: value has bad formatting." << std::endl;
 			return (ERROR);
 		}
-		if (isdigit(line[i]) == false)
-		{
-			std::cout << line << " => Error: value is not only composed of digits." << std::endl;
-			return (ERROR);
-		}
-		if (line[i] == '.' && point == false)
+		if (value[i] == '.' && point == false)
 			point = true;
-		else if (line[i] == '.' && point == true)
+		else if (value[i] == '.' && point == true)
 		{
 			std::cout << line << " => Error: value has bad formatting." << std::endl;
+			return (ERROR);
+		}
+		else if (isdigit(value[i]) == false)
+		{
+			std::cout << line << " => Error: value is not only composed of digits." << std::endl;
 			return (ERROR);
 		}
 	}

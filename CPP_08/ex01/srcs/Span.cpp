@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 13:12:59 by phautena          #+#    #+#             */
-/*   Updated: 2025/12/04 14:17:30 by phautena         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:06:04 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Span::Span(unsigned int n) : _n(n)
 Span::Span(const Span &copy) : _n(copy._n)
 {
 	// std::cout << "Span copy constructor called" << std::endl;
-	for (std::list<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
+	for (std::vector<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
 		_numbers.push_back(*it);
 }
 
@@ -40,7 +40,7 @@ Span	&Span::operator=(const Span &rhs)
 	if (this != &rhs)
 	{
 		_n = rhs._n;
-		for (std::list<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
+		for (std::vector<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
 			_numbers.push_back(*it);
 	}
 	return (*this);
@@ -55,25 +55,23 @@ void	Span::addNumbers(int n)
 
 int		Span::shortestSpan(void)
 {
-	int	lowest = *(_numbers.begin());
-	int	second_lowest = INT_MAX;
-
 	if (_numbers.size() < 2)
 		throw OnlyOneElement();
 
-	for (std::list<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
+
+	std::vector<int> temp(_numbers);
+	std::sort(temp.begin(), temp.end());
+
+	int span = temp[1] - temp[0];
+
+	for (size_t i = 2; i < temp.size(); i++)
 	{
-		if (*it < lowest)
-			lowest = *it;
+		int diff = temp[i] - temp[i - 1];
+		if (diff < span)
+			span = diff;
 	}
 
-	for (std::list<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
-	{
-		if (*it > lowest && *it < second_lowest)
-			second_lowest = *it;
-	}
-
-	return (second_lowest - lowest - 1);
+	return (span);
 }
 
 int		Span::longestSpan(void)
@@ -84,13 +82,13 @@ int		Span::longestSpan(void)
 	if (_numbers.size() < 2)
 		throw OnlyOneElement();
 
-	for (std::list<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
+	for (std::vector<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
 	{
 		if (*it < lowest)
 			lowest = *it;
 	}
 
-	for (std::list<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
+	for (std::vector<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
 	{
 		if (*it > highest)
 			highest = *it;
@@ -99,7 +97,7 @@ int		Span::longestSpan(void)
 	return (highest - lowest);
 }
 
-void	Span::generateNumbers(std::list<int>::iterator first, std::list<int>::iterator last)
+void	Span::generateNumbers(std::vector<int>::iterator first, std::vector<int>::iterator last)
 {
 	if (distance(first, last) + _numbers.size() > _n)
 		throw SpanFull();
