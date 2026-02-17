@@ -9,6 +9,7 @@ int main(int argc, char **argv)
 	}
 	if (parsing(argv) == -1) {
 		std::cout << "[-] An error has occured while parsing input. Please check you number sequence." << std::endl;
+		return (-1);
 	}
 
 	int n_elems = count_elem(argv);
