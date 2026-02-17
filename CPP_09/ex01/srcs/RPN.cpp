@@ -116,8 +116,13 @@ int RPN::calculate(const std::string &str)
 				res = b + a;
 			else if (c == '*')
 				res = b * a;
-			else
+			else if (c == '/' && a != 0 && b != 0)
 				res = b / a;
+			else
+			{
+				std::cout << "Error: can't divide by 0" << std::endl;
+				return (1);
+			}
 
 			_data.push(res);
 		}
