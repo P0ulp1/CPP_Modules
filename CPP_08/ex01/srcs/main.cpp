@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2026/02/17 16:13:59 by phautena         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:06:22 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main(int, char**)
 		range.push_back(10);
 		range.push_back(20);
 		range.push_back(30);
-		range.push_back(40);
+		range.push_back(90);
 		range.push_back(50);
 
 		d.generateNumbers(range.begin(), range.end());
@@ -72,8 +72,8 @@ int main(int, char**)
 
 		std::vector<int> t;
 		srand(static_cast<unsigned int>(time(NULL)));
-		for (int i = 0; i < 100; i++)
-			t.push_back(rand() % 56000);
+		for (int i = 0; i < 100000; i++)
+			t.push_back(rand() % 1000000000);
 
 		e.generateNumbers(t.begin(), t.end());
 

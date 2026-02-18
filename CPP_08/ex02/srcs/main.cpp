@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:28:28 by phautena          #+#    #+#             */
-/*   Updated: 2025/10/07 13:15:35 by phautena         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:20:23 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ int main(void)
 	mstack.push(737);
 	mstack.push(0);
 
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite)
+	MutantStack<int>::iterator it1 = mstack.begin();
+	MutantStack<int>::iterator ite1 = mstack.end();
+	++it1;
+	--it1;
+	while (it1 != ite1)
 	{
-		std::cout << *it << std::endl;
-		++it;
+		std::cout << *it1 << std::endl;
+		++it1;
 	}
 	std::stack<int> s(mstack);
 
-	std::cout << "-------------------------SUBJECT TEST-------------------------" << std::endl;
+	std::cout << "-------------------------MY TEST-------------------------" << std::endl;
 
 	std::stack<int>							sstack;
 	MutantStack<int>						dstack;

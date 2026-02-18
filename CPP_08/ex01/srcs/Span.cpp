@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 13:12:59 by phautena          #+#    #+#             */
-/*   Updated: 2026/02/17 16:06:04 by phautena         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:03:35 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int		Span::shortestSpan(void)
 	if (_numbers.size() < 2)
 		throw OnlyOneElement();
 
-
 	std::vector<int> temp(_numbers);
 	std::sort(temp.begin(), temp.end());
 
@@ -76,26 +75,46 @@ int		Span::shortestSpan(void)
 
 int		Span::longestSpan(void)
 {
-	int	lowest = *(_numbers.begin());
-	int	highest = INT_MIN;
-
 	if (_numbers.size() < 2)
 		throw OnlyOneElement();
 
-	for (std::vector<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
+	std::vector<int> temp(_numbers);
+	std::sort(temp.begin(), temp.end());
+
+	int span = temp[1] - temp[0];
+
+	for (size_t i = 2; i < temp.size(); i++)
 	{
-		if (*it < lowest)
-			lowest = *it;
+		int diff = temp[i] - temp[i - 1];
+		if (diff > span)
+			span = diff;
 	}
 
-	for (std::vector<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
-	{
-		if (*it > highest)
-			highest = *it;
-	}
-
-	return (highest - lowest);
+	return (span);
 }
+
+// int		Span::longestSpan(void)
+// {
+// 	int	lowest = *(_numbers.begin());
+// 	int	highest = INT_MIN;
+
+// 	if (_numbers.size() < 2)
+// 		throw OnlyOneElement();
+
+// 	for (std::vector<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
+// 	{
+// 		if (*it < lowest)
+// 			lowest = *it;
+// 	}
+
+// 	for (std::vector<int>::iterator it = _numbers.begin(); it != _numbers.end(); it++)
+// 	{
+// 		if (*it > highest)
+// 			highest = *it;
+// 	}
+
+// 	return (highest - lowest);
+// }
 
 void	Span::generateNumbers(std::vector<int>::iterator first, std::vector<int>::iterator last)
 {
